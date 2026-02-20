@@ -1,0 +1,204 @@
+{
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "home": "Home"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Arsham Khayatzadeh",
+    "title": "Product Designer",
+    "subtitle": "Crafting data-driven experiences that convert. Specializing in conversion optimization through research and user analytics.",
+    "viewWork": "View Work",
+    "downloadResume": "Download Resume",
+    "resume": "Resume",
+    "contact": "Contact",
+    "yearsExperience": "Years Experience",
+    "projectsCompleted": "Projects Completed",
+    "clientSatisfaction": "Client Satisfaction"
+  },
+  "projects": {
+    "sectionTitle": "Featured Case Studies",
+    "sectionSubtitle": "Projects with measurable impact",
+    "viewDetails": "View case",
+    "allProjects": "All Projects",
+    "allProjectsSubtitle": "Case studies showcasing measurable impact",
+    "projectNumber": "PROJECT {{number}}",
+    "viewFullCaseStudy": "View Full Case Study",
+    "experiencedLeadership": "Experienced Leadership",
+    "leadership": "Leadership",
+    "featured": "Featured"
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "A passionate designer focused on creating meaningful digital experiences",
+    "description": "Currently at IranHotelOnline, I specialize in conversion optimization and design systems that drive measurable business results. My approach combines data analytics with user-centered design to create experiences that convert.",
+    "currentRole": "Current Role",
+    "currentRoleTitle": "Product Designer at IranHotelOnline",
+    "currentRoleDesc": "Online booking platform with 500K+ MAU",
+    "focusAreas": "Focus Areas",
+    "focusAreasDesc": "Data-driven design, conversion optimization",
+    "focusAreasDetail": "Research-based design solutions",
+    "skills": "Skills & Expertise",
+    "toolsTitle": "Tools & Technologies"
+  },
+  "skills": {
+    "figma": "Figma",
+    "userResearch": "User Research",
+    "abTesting": "A/B Testing",
+    "analytics": "Analytics",
+    "designSystems": "Design Systems",
+    "prototyping": "Prototyping",
+    "conversionOptimization": "Conversion Optimization",
+    "dataAnalysis": "Data Analysis"
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "subtitle": "Have a project in mind? Let's discuss how we can collaborate",
+    "getInTouch": "Get in Touch",
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "email": "Email",
+    "emailPlaceholder": "your.email@example.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What's this about?",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project or inquiry...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again.",
+    "emailLabel": "Email me at",
+    "linkedinLabel": "Connect on LinkedIn",
+    "linkedin": "LinkedIn",
+    "emailMe": "Email Me",
+    "viewLinkedin": "View LinkedIn"
+  },
+  "footer": {
+    "rights": "© 2026 Arsham Khayatzadeh",
+    "designed": "Designed & Built by"
+  },
+  "caseStudy": {
+    "title": "Case Study",
+    "notFound": "Case Study Not Found",
+    "overview": "Project Overview",
+    "role": "Role",
+    "collaboration": "Collaboration",
+    "timeline": "Timeline",
+    "company": "Company",
+    "visitProject": "Visit Project",
+    "context": "Context",
+    "problem": "Problem",
+    "keyIssues": "Key Issues",
+    "issues": "Key Issues",
+    "goals": "Goals",
+    "research": "Research & Discovery",
+    "methods": "Research Methods",
+    "insights": "Key Insights",
+    "processLeadership": "Process & Leadership",
+    "framework": "Framework",
+    "challenges": "Challenges & Solutions",
+    "leadershipChallenges": "Key Challenges & Solutions",
+    "challengeTitle": "Challenge",
+    "solutionTitle": "Solution",
+    "impact": "Impact",
+    "designDecisions": "Design Decisions",
+    "solution": "Solution",
+    "features": "Key Features",
+    "implementation": "Implementation",
+    "results": "Results & Impact",
+    "measurementMethods": "Measurement Methods",
+    "outcomes": "Key Outcomes",
+    "metrics": "Success Metrics",
+    "learnings": "Key Learnings",
+    "beforeAfter": "Before & After Comparison",
+    "visualComparison": "Visual Comparison",
+    "visualComparisonDesc": "The redesign transformed the reservation experience—streamlining complex forms, removing unnecessary steps, and creating a clearer visual hierarchy that guides users confidently through booking.",
+    "before": "Before",
+    "after": "After",
+    "leadershipAndProcess": "Leadership & Process",
+    "researchAndProcess": "Research & Process",
+    "keyChallengesAndSolutions": "Key Challenges & Solutions",
+    "challengeLabel": "CHALLENGE:",
+    "solutionLabel": "SOLUTION:",
+    "leadershipImpact": "Leadership Impact",
+    "atomicDesignHierarchy": "Atomic Design Hierarchy",
+    "atomicDesignDesc": "From foundational tokens to complete pages—building a scalable, maintainable design system",
+    "backToProjects": "Back to Projects",
+    "backToHome": "Back to Home",
+    "previousProject": "Previous Project",
+    "nextProject": "Next Project",
+    "mobileView": "Mobile View",
+    "desktopView": "Desktop View",
+    "fullView": "Full View",
+    "note": "Note",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "caseStudyTitle": "Case Study"
+  },
+  "backToTop": {
+    "label": "Back to top"
+  },
+  "theme": {
+    "toggleTheme": "Toggle theme",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode"
+  },
+  "language": {
+    "toggleLanguage": "Toggle language"
+  },
+  "resume": {
+    "download": "Download Resume",
+    "downloadAriaLabel": "Download Resume"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "closeMenu": "Close menu",
+    "closeModal": "Close modal",
+    "dragToCompare": "Drag to compare",
+    "beforeAfterComparison": "Before and after comparison",
+    "toggleSidebar": "Toggle Sidebar"
+  },
+  "admin": {
+    "enterPassword": "Enter admin password",
+    "urlPlaceholder": "https://..."
+  },
+  "seo": {
+    "homeTitle": "Arsham Khayatzadeh • Product Designer",
+    "homeDescription": "Product Designer specializing in data-driven UX and conversion optimization",
+    "projectsTitle": "Projects • Portfolio",
+    "projectsDescription": "Explore my case studies showcasing measurable impact"
+  },
+  "atomicDesign": {
+    "title": "Atomic Design Hierarchy",
+    "subtitle": "From foundational tokens to complete pages—building a scalable and maintainable design system",
+    "clickHint": "Click on any level to view full details",
+    "modalHint": "Press ESC or click outside to close",
+    "tokens": {
+      "title": "Tokens",
+      "subtitle": "Foundation",
+      "description": "Colors, typography, spacing, and other design constants"
+    },
+    "atoms": {
+      "title": "Atoms",
+      "subtitle": "Basic Building Blocks",
+      "description": "Buttons, inputs, labels, and other fundamental UI elements"
+    },
+    "molecules": {
+      "title": "Molecules",
+      "subtitle": "Simple Components",
+      "description": "Form fields, cards, and other combinations of atoms"
+    },
+    "organisms": {
+      "title": "Organisms",
+      "subtitle": "Complex Components",
+      "description": "Navigation bars, forms, and other sophisticated UI sections"
+    },
+    "pages": {
+      "title": "Pages",
+      "subtitle": "Complete Views",
+      "description": "Full layouts combining all components into complete experiences"
+    }
+  }
+}

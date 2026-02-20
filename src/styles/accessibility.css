@@ -1,0 +1,221 @@
+/* ============================================
+   WCAG AAA - ACCESSIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* 1. REDUCED MOTION - برای کاربرانی که motion sickness دارن */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable Framer Motion animations */
+  [data-framer-motion] {
+    transform: none !important;
+  }
+}
+
+/* 2. HIGH CONTRAST MODE - برای کاربران با کم‌بینایی */
+@media (prefers-contrast: high) {
+  :root {
+    --contrast-multiplier: 1.5;
+  }
+
+  /* Enhance borders */
+  * {
+    border-width: 2px !important;
+  }
+
+  /* Enhance text contrast */
+  body {
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  .dark body {
+    color: #fff !important;
+    background: #000 !important;
+  }
+}
+
+/* 3. ENHANCED FOCUS INDICATORS - WCAG AAA requires 2px minimum */
+*:focus-visible {
+  outline: 3px solid currentColor !important;
+  outline-offset: 3px !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid #6366f1 !important;
+  outline-offset: 4px !important;
+}
+
+/* 4. SKIP LINKS - بهبود یافته */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #6366f1;
+  color: #fff;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 9999;
+  border-radius: 0 0 0.5rem 0;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* 5. SCREEN READER ONLY - بهبود یافته */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* 6. FORCED COLORS MODE - برای Windows High Contrast */
+@media (forced-colors: active) {
+  * {
+    forced-color-adjust: auto;
+  }
+
+  /* Ensure icons are visible */
+  svg {
+    forced-color-adjust: auto;
+  }
+}
+
+/* 7. LARGE TEXT SUPPORT - برای کاربرانی که font size رو بزرگ می‌کنن */
+@media (min-width: 1px) {
+  html {
+    font-size: 16px; /* Base size */
+  }
+
+  /* Support up to 200% text zoom */
+  @supports (font-size: clamp(1rem, 2vw, 2rem)) {
+    body {
+      font-size: clamp(1rem, 1.2vw, 1.5rem);
+    }
+  }
+}
+
+/* 8. TOUCH TARGET SIZE - AAA requires 48x48px minimum */
+button,
+a,
+input,
+select,
+textarea,
+[role="button"],
+[role="link"] {
+  min-width: 48px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Exception for text links in paragraphs */
+p a,
+li a {
+  min-width: auto;
+  min-height: auto;
+  display: inline;
+}
+
+/* 9. ERROR PREVENTION - Visual indicators */
+[aria-invalid="true"] {
+  border: 3px solid #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+}
+
+[aria-invalid="true"]:focus {
+  outline: 3px solid #ef4444 !important;
+  outline-offset: 3px !important;
+}
+
+/* 10. LOADING STATES - برای screen readers */
+[aria-busy="true"] {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+/* 11. ENHANCED LINK INDICATORS */
+a:not([class]) {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:not([class]):hover {
+  text-decoration-thickness: 3px;
+}
+
+/* 12. PRINT STYLES - برای accessibility در چاپ */
+@media print {
+  /* Show all hidden content */
+  [hidden] {
+    display: block !important;
+  }
+
+  /* Ensure links are visible */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* Remove animations */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 13. DARK MODE - با contrast بهتر */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --text-primary: #ffffff;
+    --border-color: #ffffff;
+  }
+}
+
+/* 14. LIGHT MODE - با contrast بهتر */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #ffffff;
+    --text-primary: #000000;
+    --border-color: #000000;
+  }
+}
+
+/* 15. PREFERS COLOR SCHEME - برای کاربرانی که sensitivity دارن */
+@media (prefers-color-scheme: no-preference) {
+  :root {
+    /* Neutral, high-contrast defaults */
+    --bg-primary: #ffffff;
+    --text-primary: #000000;
+  }
+}

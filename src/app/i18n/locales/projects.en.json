@@ -1,0 +1,231 @@
+{
+  "reservation-flow": {
+    "title": "Reservation Flow Redesign",
+    "shortDesc": "+20% reserve completion rate and cut booking time from 7 minutes to 3 minutes",
+    "description": "Redesigned the reservation flow for IranHotelOnline, a high-traffic booking platform with 500K+ MAU, to reduce friction and improve conversion rates.",
+    "tags": ["Product Design", "UX Research", "Conversion Optimization"],
+    "role": "Product Designer",
+    "collaboration": "PM, PO, Front-end Developers, QA",
+    "timeline": "3 months",
+    "company": "IranHotelOnline",
+    "context": "IranHotelOnline is a high-traffic hotel booking platform serving over 500,000+ monthly active users. The reservation flow is the primary revenue-driving funnel, making its performance critical to business growth.",
+    "problem": {
+      "description": "Despite strong traffic, the booking funnel showed clear performance issues:",
+      "issues": [
+        "High user drop-off before payment",
+        "Long average booking completion time (around 7–8 minutes)",
+        "Frequent rage clicks and hesitation signals"
+      ],
+      "goals": [
+        "Increase booking completion rate",
+        "Reduce friction and booking time",
+        "Improve clarity and user confidence throughout the flow"
+      ]
+    },
+    "research": {
+      "description": "This project was conducted as a cross-functional effort, with close collaboration between Design, Product, and Engineering.",
+      "methods": [
+        "Reviewed Google Analytics data together with the PM to identify drop-off points and bottlenecks",
+        "Analyzed Microsoft Clarity session recordings and heatmaps to observe real user behavior",
+        "Evaluated feature ideas with the PM based on data-driven hypotheses",
+        "Validated technical feasibility of design changes with the PO and front-end developers",
+        "Identified key friction points through behavioral patterns rather than assumptions"
+      ],
+      "insights": [
+        "Form-heavy steps caused hesitation and abandonment",
+        "Some steps did not align with users' mental models of a \"standard booking flow\"",
+        "Redundant inputs increased cognitive load and slowed decision-making"
+      ]
+    },
+    "processLeadership": {
+      "description": "Beyond execution, I defined and led the entire design process—from stakeholder alignment to post-launch monitoring. This involved navigating technical constraints, managing cross-functional friction, and establishing quality standards that balanced speed with excellence.",
+      "framework": {
+        "title": "7-Step Design Process Framework",
+        "steps": [
+          "Guerrilla User Testing (pre-design) - Conducted in-person usability tests with non-technical users using think-aloud protocol to identify core friction points",
+          "Data Analysis (Microsoft Clarity) - Analyzed session recordings, heatmaps, and rage click patterns to validate assumptions with behavioral data",
+          "PM Alignment Meeting - Presented research findings and negotiated scope (e.g., debated removing low-value checkboxes vs. stakeholder requests)",
+          "PO/Dev Constraint Mapping - Discussed technical limitations upfront to avoid designing features requiring unavailable backend logic",
+          "Design Execution - Created high-fidelity prototypes based on validated insights and technical feasibility",
+          "Second-Round User Testing (staging) - Tested live implementation on staging environment to catch mobile-specific issues (e.g., keyboard + bottom sheet overlap)",
+          "Rigorous QA & Launch - Enforced strict design quality standards (2px max tolerance) and collaborated with developers through documented feedback"
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Stakeholder Negotiation",
+          "issue": "PM wanted to keep low-value service checkboxes for certain stakeholders, but data showed they confused users and added no conversion value.",
+          "solution": "Presented Clarity heatmap data showing 73% of users ignored these checkboxes. PM agreed to deprioritize them in v1 and validate with data later."
+        },
+        {
+          "title": "Technical Constraints",
+          "issue": "PO + developers flagged that some features (like real-time logic for dynamic fields) required unavailable backend work outside the current sprint capacity.",
+          "solution": "Adjusted designs to align with current backend capabilities. Prioritized UI improvements requiring only front-end changes and deferred heavy features post-launch."
+        },
+        {
+          "title": "Critical Mobile Bug Discovery",
+          "issue": "During second-round testing on staging, discovered that when mobile keyboard opened, bottom sheet input fields became inaccessible—users literally couldn't submit the form.",
+          "solution": "Immediately notified dev team. Redesigned bottom sheet positioning with safe padding and tested 3 different layouts to ensure keyboard + sheet coexisted comfortably."
+        },
+        {
+          "title": "Developer Friction Over Strict Standards",
+          "issue": "When I enforced rigorous QA (flagging even 2px errors), developers felt I was being overly critical. After fixes, new issues appeared, leading to rework fatigue.",
+          "solution": "Held alignment session with PO, PM, and Dev. Established '2-strike rule': designs rejected more than twice for quality issues required root cause analysis. Devs improved attention to detail, and rework dropped 60%."
+        },
+        {
+          "title": "Time Investment for Post-Launch Monitoring",
+          "issue": "I monitored Microsoft Clarity and Google Analytics for 5 consecutive days after launch—very time-consuming, and it wasn't clear if it was worthwhile.",
+          "solution": "Monitoring caught a minor issue (mobile toggle sizes were too small). Realized careful post-launch observation can catch things standard data analysis misses. Now this is standard practice for high-risk launches."
+        }
+      ],
+      "impact": [
+        "Defined a 7-step process framework now used by the design team for high-risk projects",
+        "Two-round user testing (pre-design + staging) caught a critical mobile bug that would have reduced mobile conversion by 15-20%",
+        "Strict quality standards led to more consistent design across the platform (QA rejection rate dropped 60% after '2-strike rule')",
+        "Stakeholder alignment sessions reduced post-launch change requests by 80% (expectations were clearer upfront)",
+        "Process documentation helped a junior designer successfully adopt this framework for payment flow redesign (launched with 92% quality score)"
+      ]
+    },
+    "solution": {
+      "description": "The final solution was a streamlined reservation flow featuring:",
+      "features": [
+        "Fewer, clearer steps",
+        "Better information hierarchy",
+        "Simplified forms",
+        "Clear progress indicators and user feedback"
+      ],
+      "implementation": "Delivered designs with full specifications and worked closely with QA to ensure precise implementation. I personally QA-checked the implementation end-to-end."
+    },
+    "learnings": [
+      "When we removed the 'Passenger Details' step and merged it with 'Review,' the #1 drop-off point disappeared—sometimes the best design decision is deletion, not addition",
+      "When we showed price in real-time within the form, user trust increased by 28% (measured via exit survey)—transparency matters",
+      "Engineers flagged a backend constraint on autofill logic that could have delayed launch by 2 weeks—our early collaboration saved us from redesigning",
+      "Iranian users expect different payment flows than international users—localization isn't just translation, it's adapting behavior"
+    ]
+  },
+  "design-system": {
+    "title": "Design System Creation",
+    "shortDesc": "Cut feature design time from 5 days to 3 days with a unified component library",
+    "description": "Built a comprehensive atomic design system for IranHotelOnline to standardize UI components and accelerate the design-to-development workflow.",
+    "tags": ["Design Systems", "UI Design", "Component Library"],
+    "role": "Product Designer",
+    "collaboration": "Design Team, Front-end Developers",
+    "timeline": "2 months",
+    "company": "IranHotelOnline",
+    "context": "As the team grew, inconsistent UI patterns emerged across the platform. Designers rebuilt similar components in different ways, and developers implemented the same functionality with different styles. This created maintenance issues and a fragmented user experience.",
+    "problem": {
+      "description": "The lack of a unified design language was causing significant inefficiencies:",
+      "issues": [
+        "Designers spent hours recreating common components from scratch",
+        "Developers duplicated components with different implementations",
+        "Spacing, colors, and typography were inconsistent across pages",
+        "Handoff process was slow with constant clarification questions",
+        "New team members struggled to learn design patterns"
+      ],
+      "goals": [
+        "Create a single source of truth for design patterns",
+        "Speed up the design-to-development workflow",
+        "Ensure UI consistency across the platform",
+        "Reduce onboarding time for new team members",
+        "Free up designers to focus on solving problems rather than rebuilding components"
+      ]
+    },
+    "research": {
+      "description": "Audited existing patterns and collaborated with stakeholders to understand pain points.",
+      "methods": [
+        "UI inventory across all platform pages",
+        "Interviewed designers and developers about their workflow blockers",
+        "Analyzed documentation gaps and common questions",
+        "Studied best practices from established design systems (Material, Carbon, Atlassian)",
+        "Identified most-used components and their variations"
+      ],
+      "insights": [
+        "Identical components had 5-7 different implementations",
+        "Developers wanted clearer specs and reusable code",
+        "Designers needed faster access to ready-to-use components",
+        "Inconsistent naming caused confusion",
+        "Documentation was key to adoption"
+      ]
+    },
+    "solution": {
+      "description": "Delivered a complete, documented design system featuring:",
+      "features": [
+        "Comprehensive Figma component library with variants and auto-layout",
+        "Design tokens covering all visual properties",
+        "Usage documentation with examples and best practices",
+        "Accessibility guidelines integrated into component specs"
+      ],
+      "implementation": "Launched the system incrementally—starting with high-traffic pages to validate adoption, then expanding across the platform."
+    },
+    "learnings": [
+      "Documentation makes the difference between a design system that's used vs. ignored—invest heavily upfront",
+      "Start with small, high-impact components rather than trying to build everything at once—adoption matters more than completeness",
+      "Hosting regular design system office hours (weekly 30-min sessions) helped address blockers and gather feedback",
+      "Aligning component names with dev frameworks (e.g., matching React prop names) removed handoff friction"
+    ]
+  },
+  "ihotelhub": {
+    "title": "B2B Platform iHotelHub",
+    "shortDesc": "Cut hotel manager task completion time by 45% through dashboard redesign",
+    "description": "Redesigned the B2B dashboard for hotel managers to streamline property management, booking oversight, and revenue tracking.",
+    "tags": ["B2B Design", "Dashboard", "Product Design"],
+    "role": "Product Designer",
+    "collaboration": "PM, Back-end Developers, Customer Success Team",
+    "timeline": "4 months",
+    "company": "IranHotelOnline",
+    "context": "iHotelHub is a B2B platform used by hotel managers to manage properties, track reservations, and monitor revenue. The legacy interface was cluttered and inefficient, leading to high support tickets and user frustration.",
+    "problem": {
+      "description": "Hotel managers faced significant challenges in their workflow:",
+      "issues": [
+        "Critical information was buried in nested menus",
+        "No clear visual hierarchy for high-priority tasks",
+        "Slow performance with large datasets",
+        "No mobile version (while managers are often on the move)",
+        "Difficult system learning curve for new users"
+      ],
+      "goals": [
+        "Reduce time spent on common tasks",
+        "Improve information architecture and navigation",
+        "Create a responsive mobile experience",
+        "Decrease support tickets",
+        "Increase user satisfaction"
+      ]
+    },
+    "research": {
+      "description": "Conducted extensive research with hotel managers to understand their workflow.",
+      "methods": [
+        "Interviewed 12 hotel managers about their daily tasks and pain points",
+        "Shadowed 3 managers throughout their workday to observe real usage patterns",
+        "Analyzed support tickets to identify common issues",
+        "Reviewed analytics data to see which features were used and where users dropped off",
+        "Created user journey maps for key scenarios"
+      ],
+      "insights": [
+        "80% of tasks involved checking today's bookings and revenue",
+        "Managers needed quick access to guest contact info for urgent issues",
+        "Mobile access was critical for managers not at their desks",
+        "Data export functionality was heavily used but poorly designed",
+        "Visual clutter was overwhelming—managers wanted insights at a glance"
+      ]
+    },
+    "solution": {
+      "description": "Delivered a modern, efficient B2B dashboard featuring:",
+      "features": [
+        "Priority-based dashboard showing critical information first",
+        "Responsive mobile design that works comfortably on all devices",
+        "Simplified navigation with clear information architecture",
+        "Advanced search and filtering for bookings and guests",
+        "Visual charts for revenue and occupancy insights",
+        "Batch operations for managing multiple bookings",
+        "Improved data export functionality"
+      ],
+      "implementation": "Launched in phases—first the dashboard, then other modules. Provided video tutorials and live training sessions for existing users."
+    },
+    "learnings": [
+      "B2B users prioritize efficiency over beauty—every click matters when you're managing 50+ bookings daily",
+      "Mobile-first design isn't just for consumers—hotel managers are constantly on the move",
+      "Providing training resources (videos, guides) alongside new features significantly improved adoption",
+      "Hoteliers want customizable dashboards—one size doesn't fit all for different property types"
+    ]
+  }
+}

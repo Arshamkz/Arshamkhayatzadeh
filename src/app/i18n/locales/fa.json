@@ -1,0 +1,204 @@
+{
+  "nav": {
+    "work": "نمونه‌کارها",
+    "about": "درباره من",
+    "contact": "تماس",
+    "home": "خانه"
+  },
+  "hero": {
+    "greeting": "سلام، من",
+    "name": "Arsham Khayatzadeh",
+    "title": "طراح محصول",
+    "subtitle": "طراحی تجربه‌هایی که با داده حرف می‌زنن و به نتیجه می‌رسن. تخصص من بهینه‌سازی نرخ تبدیل از طریق تحقیق و تحلیل رفتار کاربر.",
+    "viewWork": "نمونه‌کارها",
+    "downloadResume": "دانلود رزومه",
+    "resume": "رزومه",
+    "contact": "تماس بگیرید",
+    "yearsExperience": "سال تجربه",
+    "projectsCompleted": "پروژه تکمیل شده",
+    "clientSatisfaction": "رضایت مشتری"
+  },
+  "projects": {
+    "sectionTitle": "نمونه‌کارهای برگزیده",
+    "sectionSubtitle": "پروژه‌هایی که تأثیرشون با عدد اثبات شده",
+    "viewDetails": "مشاهده جزئیات",
+    "allProjects": "همه پروژه‌ها",
+    "allProjectsSubtitle": "پروژه‌ها با نتایج واقعی",
+    "projectNumber": "پروژه {{number}}",
+    "viewFullCaseStudy": "جزئیات کامل پروژه",
+    "experiencedLeadership": "رهبری فرآیند",
+    "leadership": "رهبری",
+    "featured": "ویژه"
+  },
+  "about": {
+    "title": "درباره من",
+    "intro": "طراحی با هدف ساخت تجربه‌های دیجیتال معنادار",
+    "description": "الان توی ایران‌هتل‌آنلاین روی بهینه‌سازی نرخ تبدیل و سیستم‌های طراحی کار می‌کنم که نتایج کسب‌وکار واقعی می‌سازن. روش کارم ترکیب تحلیل داده با طراحی کاربرمحوره تا تجربه‌هایی بسازم که به نتیجه برسن.",
+    "currentRole": "الان کجا کار می‌کنم",
+    "currentRoleTitle": "طراح محصول در ایران‌هتل‌آنلاین",
+    "currentRoleDesc": "پلتفرم رزرو آنلاین با بیش از ۵۰۰ هزار کاربر فعال در ماه",
+    "focusAreas": "روی چی تمرکز دارم",
+    "focusAreasDesc": "طراحی مبتنی بر داده، بهینه‌سازی نرخ تبدیل",
+    "focusAreasDetail": "طراحی‌های مبتنی بر تحقیق و بررسی",
+    "skills": "مهارت‌ها و تخصص‌ها",
+    "toolsTitle": "ابزارها و تکنولوژی‌ها"
+  },
+  "skills": {
+    "figma": "فیگما",
+    "userResearch": "تحقیق کاربری",
+    "abTesting": "تست A/B",
+    "analytics": "تحلیل داده",
+    "designSystems": "سیستم طراحی",
+    "prototyping": "نمونه‌سازی",
+    "conversionOptimization": "بهینه‌سازی تبدیل",
+    "dataAnalysis": "تحلیل داده"
+  },
+  "contact": {
+    "title": "بیایید با هم کار کنیم",
+    "subtitle": "پروژه‌ای دارید؟ بیایید در موردش حرف بزنیم",
+    "getInTouch": "در تماس باشیم",
+    "name": "نام",
+    "namePlaceholder": "نام کامل شما",
+    "email": "ایمیل",
+    "emailPlaceholder": "your.email@example.com",
+    "subject": "موضوع",
+    "subjectPlaceholder": "در مورد چیه؟",
+    "message": "پیام",
+    "messagePlaceholder": "در مورد پروژه یا درخواستتون بنویسید...",
+    "send": "ارسال پیام",
+    "sending": "در حال ارسال...",
+    "success": "پیامتون با موفقیت ارسال شد!",
+    "error": "خطا در ارسال پیام. لطفاً دوباره امتحان کنید.",
+    "emailLabel": "ایمیل به",
+    "linkedinLabel": "ارتباط در لینکدین",
+    "linkedin": "لینکدین",
+    "emailMe": "ایمیل بزنید",
+    "viewLinkedin": "پروفایل لینکدین"
+  },
+  "footer": {
+    "rights": "© ۲۰۲۶ Arsham Khayatzadeh",
+    "designed": "طراحی و توسعه توسط"
+  },
+  "caseStudy": {
+    "title": "جزئیات پروژه",
+    "notFound": "پروژه پیدا نشد",
+    "overview": "خلاصه پروژه",
+    "role": "نقش من",
+    "collaboration": "همکاری با",
+    "timeline": "مدت زمان",
+    "company": "شرکت",
+    "visitProject": "مشاهده پروژه",
+    "context": "زمینه و پیش‌زمینه",
+    "problem": "مشکل اصلی",
+    "keyIssues": "چالش‌های اصلی",
+    "issues": "چالش‌های اصلی",
+    "goals": "اهداف پروژه",
+    "research": "تحقیق و بررسی",
+    "methods": "روش‌های تحقیق",
+    "insights": "چیزهایی که فهمیدیم",
+    "processLeadership": "فرآیند کار و رهبری فرآیند",
+    "framework": "چارچوب کاری",
+    "challenges": "چالش‌ها و راه‌حل‌ها",
+    "leadershipChallenges": "چالش‌های اصلی و راه‌حل‌ها",
+    "challengeTitle": "چالش",
+    "solutionTitle": "راه‌حل",
+    "impact": "تأثیر و نتایج",
+    "designDecisions": "تصمیمات طراحی",
+    "solution": "راه‌حل نهایی",
+    "features": "ویژگی‌های اصلی",
+    "implementation": "پیاده‌سازی",
+    "results": "نتایج و تأثیر",
+    "measurementMethods": "روش‌های اندازه‌گیری",
+    "outcomes": "دستاوردها",
+    "metrics": "معیارهای موفقیت",
+    "learnings": "چیزهایی که یاد گرفتم",
+    "beforeAfter": "قبل و بعد",
+    "visualComparison": "مقایسه تصویری",
+    "visualComparisonDesc": "با بازطراحی، فرم‌های پیچیده رو ساده کردیم، مراحل اضافی رو حذف کردیم و یه سلسله‌مراتب تصویری واضح ایجاد کردیم که کاربرها رو با اطمینان توی مسیر رزرو هدایت می‌کنه.",
+    "before": "قبل",
+    "after": "بعد",
+    "leadershipAndProcess": "رهبری فرآیند و نحوه کار",
+    "researchAndProcess": "تحقیق و فرآیند کار",
+    "keyChallengesAndSolutions": "چالش‌های اصلی و راه‌حل‌ها",
+    "challengeLabel": "چالش:",
+    "solutionLabel": "راه‌حل:",
+    "leadershipImpact": "تأثیر رهبری فرآیند",
+    "atomicDesignHierarchy": "سلسله‌مراتب طراحی اتمیک",
+    "atomicDesignDesc": "از توکن‌های پایه تا صفحات کامل—ساخت یک سیستم طراحی مقیاس‌پذیر و قابل نگهداری",
+    "backToProjects": "بازگشت به پروژه‌ها",
+    "backToHome": "بازگشت به خانه",
+    "previousProject": "پروژه قبلی",
+    "nextProject": "پروژه بعدی",
+    "mobileView": "نمای موبایل",
+    "desktopView": "نمای دسکتاپ",
+    "fullView": "نمای کامل",
+    "note": "نکته",
+    "showMore": "بیشتر",
+    "showLess": "کمتر",
+    "caseStudyTitle": "جزئیات پروژه"
+  },
+  "backToTop": {
+    "label": "بازگشت به بالا"
+  },
+  "theme": {
+    "toggleTheme": "تغییر تم",
+    "lightMode": "حالت روشن",
+    "darkMode": "حالت تاریک"
+  },
+  "language": {
+    "toggleLanguage": "تغییر زبان"
+  },
+  "resume": {
+    "download": "دانلود رزومه",
+    "downloadAriaLabel": "دانلود رزومه"
+  },
+  "accessibility": {
+    "skipToContent": "رفتن به محتوای اصلی",
+    "closeMenu": "بستن منو",
+    "closeModal": "بستن پنجره",
+    "dragToCompare": "برای مقایسه بکشید",
+    "beforeAfterComparison": "مقایسه قبل و بعد",
+    "toggleSidebar": "تغییر نوار کناری"
+  },
+  "admin": {
+    "enterPassword": "رمز عبور ادمین را وارد کنید",
+    "urlPlaceholder": "https://..."
+  },
+  "seo": {
+    "homeTitle": "Arsham Khayatzadeh • طراح محصول",
+    "homeDescription": "طراح محصول با تخصص در تجربه کاربری مبتنی بر داده و بهینه‌سازی نرخ تبدیل",
+    "projectsTitle": "پروژه‌ها • نمونه‌کارها",
+    "projectsDescription": "نمونه‌کارهای من با نتایج واقعی رو ببینید"
+  },
+  "atomicDesign": {
+    "title": "سلسله‌مراتب طراحی اتمیک",
+    "subtitle": "از توکن‌های پایه تا صفحات کامل—ساخت یک سیستم طراحی مقیاس‌پذیر و قابل نگهداری",
+    "clickHint": "روی هر مرحله کلیک کنید تا جزئیات کامل رو ببینید",
+    "modalHint": "برای بستن ESC بزنید یا بیرون کلیک کنید",
+    "tokens": {
+      "title": "توکن‌ها",
+      "subtitle": "پایه و اساس",
+      "description": "رنگ‌ها، تایپوگرافی، فاصله‌گذاری و سایر ثابت‌های طراحی"
+    },
+    "atoms": {
+      "title": "اتم‌ها",
+      "subtitle": "واحدهای پایه",
+      "description": "دکمه‌ها، فیلدها، برچسب‌ها و سایر المان‌های اولیه UI"
+    },
+    "molecules": {
+      "title": "مولکول‌ها",
+      "subtitle": "کامپوننت‌های ساده",
+      "description": "فیلدهای فرم، کارت‌ها و ترکیب‌های ساده از اتم‌ها"
+    },
+    "organisms": {
+      "title": "ارگانیزم‌ها",
+      "subtitle": "کامپوننت‌های پیچیده",
+      "description": "نوار منو، فرم‌ها و سایر بخش‌های پیچیده‌تر UI"
+    },
+    "pages": {
+      "title": "صفحات",
+      "subtitle": "نماهای کامل",
+      "description": "صفحات کامل که همه کامپوننت‌ها رو ترکیب می‌کنن"
+    }
+  }
+}
