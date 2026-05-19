@@ -13,10 +13,8 @@ import { ResumePreviewModal } from '../components/ResumePreviewModal';
 import { BackToTop } from '../components/BackToTop';
 import { LanguageToggle } from '../components/LanguageToggle';
 import DotGrid from '../components/DotGrid';
-import { AIChatbot } from '../components/AIChatbot';
 import { useState, useRef } from 'react';
-// Placeholder profile image - replace with actual profile photo
-const profileImage = 'https://via.placeholder.com/200x200/6366f1/ffffff?text=Profile';
+import profileImage from '@/imports/profile.jpg';
 
 export function Home() {
   const navigate = useNavigate();
@@ -121,14 +119,15 @@ export function Home() {
               >
                 <div className="relative group">
                   {/* Glow effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-                  
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full blur-xl opacity-30 group-hover:opacity-70 transition-all duration-500" />
+
                   {/* Image container with glassmorphism */}
-                  <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-white/60 dark:bg-white/10 backdrop-blur-md border-4 border-white/50 dark:border-white/20 shadow-2xl shadow-blue-500/20">
+                  <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-white/60 dark:bg-white/10 backdrop-blur-md border-4 border-white/50 dark:border-white/20 shadow-2xl shadow-blue-500/20 group-hover:shadow-3xl group-hover:shadow-blue-500/40 transition-all duration-500">
                     <img
                       src={profileImage}
-                      alt="Arsham Khayatzadeh"
-                      className="w-full h-full object-cover"
+                      alt="Arsham Khayatzadeh - Product Designer"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                      loading="eager"
                     />
                   </div>
                 </div>
@@ -373,9 +372,6 @@ export function Home() {
       />
 
       <BackToTop />
-
-      {/* AI Chatbot */}
-      <AIChatbot />
     </>
   );
 }
