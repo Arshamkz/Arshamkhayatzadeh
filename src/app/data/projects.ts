@@ -1,10 +1,11 @@
-import reservationFlowImage from 'figma:asset/de83b2f9e966222760453bf7637357139849c8b4.png';
-import reservationFlowBeforeAfter from 'figma:asset/9dabd07a370668a34f92dd9253c0c8b423759f30.png';
-import iHotelHubDesktop from 'figma:asset/c31deefaa164ecd09bd3b533391d625fc853aba3.png';
-import iHotelHubMobile from 'figma:asset/0b1ea7208261b49e46d0242ddbfb3165ef994014.png';
-import iHotelHubMobileFullPage from 'figma:asset/1a3297ad9e44fb6bff9127a00deefbfab478671a.png';
-import designSystemThumbnail from 'figma:asset/5d4e51219992a5cb76b00e539d7cbd3414791ad0.png';
-import designSystemGallery from 'figma:asset/7e5d3349e238402eaff556a404498f55a6a5108b.png';
+// Placeholder images - replace with actual URLs or local assets
+const reservationFlowImage = 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Reservation+Flow';
+const reservationFlowBeforeAfter = 'https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Before+After';
+const iHotelHubDesktop = 'https://via.placeholder.com/800x600/3b82f6/ffffff?text=iHotelHub+Desktop';
+const iHotelHubMobile = 'https://via.placeholder.com/400x800/06b6d4/ffffff?text=iHotelHub+Mobile';
+const iHotelHubMobileFullPage = 'https://via.placeholder.com/400x800/0ea5e9/ffffff?text=iHotelHub+Full';
+const designSystemThumbnail = 'https://via.placeholder.com/800x600/10b981/ffffff?text=Design+System';
+const designSystemGallery = 'https://via.placeholder.com/800x600/059669/ffffff?text=Design+Gallery';
 
 export interface Project {
   id: string;
@@ -510,4 +511,8 @@ export const projects: Project[] = [
 
 export function getProjectById(id: string): Project | undefined {
   return projects.find(p => p.id === id);
+}
+
+export function getAllProjects(): Project[] {
+  return projects;
 }

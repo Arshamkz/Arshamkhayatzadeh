@@ -125,6 +125,32 @@
     "leadershipImpact": "Leadership Impact",
     "atomicDesignHierarchy": "Atomic Design Hierarchy",
     "atomicDesignDesc": "From foundational tokens to complete pages—building a scalable, maintainable design system",
+    "atomicStages": {
+      "tokens": {
+        "title": "Design Tokens",
+        "description": "Foundation layer defining colors, typography, spacing, and visual properties"
+      },
+      "atoms": {
+        "title": "Atoms",
+        "description": "Basic building blocks like buttons, inputs, and labels that cannot be broken down further"
+      },
+      "molecules": {
+        "title": "Molecules",
+        "description": "Simple component groups combining atoms (search boxes, form fields, navigation tabs)"
+      },
+      "organisms": {
+        "title": "Organisms",
+        "description": "Complex UI sections combining molecules and atoms (cards, galleries, navigation bars)"
+      },
+      "pages": {
+        "title": "Pages",
+        "description": "Complete screens assembling all components into functional user interfaces"
+      },
+      "clickToExpand": "Click to expand"
+    },
+    "otherProjects": "Other Projects",
+    "exploreMore": "Explore more of my work",
+    "viewProject": "View Project",
     "backToProjects": "Back to Projects",
     "backToHome": "Back to Home",
     "previousProject": "Previous Project",
@@ -159,10 +185,6 @@
     "dragToCompare": "Drag to compare",
     "beforeAfterComparison": "Before and after comparison",
     "toggleSidebar": "Toggle Sidebar"
-  },
-  "admin": {
-    "enterPassword": "Enter admin password",
-    "urlPlaceholder": "https://..."
   },
   "seo": {
     "homeTitle": "Arsham Khayatzadeh • Product Designer",

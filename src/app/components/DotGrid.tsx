@@ -1,11 +1,11 @@
-import { useRef, useEffect, useCallback, useMemo } from 'react';
+import { useRef, useEffect, useCallback, useMemo, useState } from 'react';
 import { gsap } from 'gsap';
 
 import './DotGrid.css';
 
-const throttle = (func: (...args: any[]) => void, limit: number) => {
+const throttle = (func: Function, limit: number) => {
   let lastCall = 0;
-  return function (this: any, ...args: any[]) {
+  return function (this: unknown, ...args: unknown[]) {
     const now = performance.now();
     if (now - lastCall >= limit) {
       lastCall = now;
@@ -63,6 +63,7 @@ const DotGrid = ({
   className = '',
   style
 }: DotGridProps) => {
+  const [isMobile, setIsMobile] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<Dot[]>([]);
@@ -76,6 +77,18 @@ const DotGrid = ({
     lastX: 0,
     lastY: 0
   });
+
+  // Check if mobile on mount
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor]);
   const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor]);
@@ -128,6 +141,7 @@ const DotGrid = ({
   }, [dotSize, gap]);
 
   useEffect(() => {
+    if (isMobile) return; // Skip on mobile
     if (!circlePath) return;
 
     let rafId: number;
@@ -171,9 +185,10 @@ const DotGrid = ({
 
     draw();
     return () => cancelAnimationFrame(rafId);
-  }, [proximity, baseColor, activeRgb, baseRgb, circlePath]);
+  }, [isMobile, proximity, baseColor, activeRgb, baseRgb, circlePath]);
 
   useEffect(() => {
+    if (isMobile) return; // Skip on mobile
     buildGrid();
     let ro: ResizeObserver | null = null;
     if ('ResizeObserver' in window) {
@@ -186,9 +201,11 @@ const DotGrid = ({
       if (ro) ro.disconnect();
       else window.removeEventListener('resize', buildGrid);
     };
-  }, [buildGrid]);
+  }, [isMobile, buildGrid]);
 
   useEffect(() => {
+    if (isMobile) return; // Skip on mobile
+    
     const onMove = (e: MouseEvent) => {
       const now = performance.now();
       const pr = pointerRef.current;
@@ -294,7 +311,12 @@ const DotGrid = ({
       window.removeEventListener('mousemove', throttledMove);
       window.removeEventListener('click', onClick);
     };
-  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
+  }, [isMobile, maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
+
+  // Don't render on mobile - return AFTER all hooks
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <section className={`dot-grid ${className}`} style={style}>

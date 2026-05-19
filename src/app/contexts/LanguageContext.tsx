@@ -27,11 +27,12 @@ function LanguageProviderContent({ children }: { children: React.ReactNode }) {
     
     // Safely update localStorage
     try {
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('language', lang);
-      }
+      localStorage.setItem('language', lang);
     } catch (error) {
-      console.error('Failed to save language to localStorage:', error);
+      // Silently fail if localStorage is not available
+      if (import.meta.env.DEV) {
+        console.error('Failed to save language to localStorage:', error);
+      }
     }
     
     // Update document direction and lang attribute

@@ -1,104 +1,101 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
-// Import all Atomic Design stage images
-import tokensImage from 'figma:asset/e8a0cfc09bd610d7ec46941c996412738142cc5b.png';
-import atomsImage from 'figma:asset/cf37d6872859564b6b829947c33f849e68cb88de.png';
-import moleculesImage from 'figma:asset/b774e37bec1b852c045c3b520fb9eeebcd50608e.png';
-import organismsImage from 'figma:asset/f0c798f47756faae319b5e95761318314fa5e8d0.png';
-import pagesImage from 'figma:asset/9eba92a5b0c1de4014a5a740d2765f7427dc252b.png';
+// Placeholder images for Atomic Design stages - replace with actual assets
+const tokensImage = 'https://via.placeholder.com/600x400/a855f7/ffffff?text=Tokens';
+const atomsImage = 'https://via.placeholder.com/600x400/3b82f6/ffffff?text=Atoms';
+const moleculesImage = 'https://via.placeholder.com/600x400/06b6d4/ffffff?text=Molecules';
+const organismsImage = 'https://via.placeholder.com/600x400/10b981/ffffff?text=Organisms';
+const pagesImage = 'https://via.placeholder.com/600x400/f59e0b/ffffff?text=Pages';
 
 interface AtomicStage {
-  title: string;
-  description: string;
+  id: string;
   image: string;
   color: string;
 }
 
-const atomicStages: AtomicStage[] = [
-  {
-    title: 'Design Tokens',
-    description: 'Foundation layer defining colors, typography, spacing, and visual properties',
-    image: tokensImage,
-    color: 'from-purple-500 to-pink-500'
-  },
-  {
-    title: 'Atoms',
-    description: 'Basic building blocks like buttons, inputs, and labels that cannot be broken down further',
-    image: atomsImage,
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    title: 'Molecules',
-    description: 'Simple component groups combining atoms (search boxes, form fields, navigation tabs)',
-    image: moleculesImage,
-    color: 'from-green-500 to-emerald-500'
-  },
-  {
-    title: 'Organisms',
-    description: 'Complex UI sections combining molecules and atoms (cards, galleries, navigation bars)',
-    image: organismsImage,
-    color: 'from-amber-500 to-orange-500'
-  },
-  {
-    title: 'Pages',
-    description: 'Complete screens assembling all components into functional user interfaces',
-    image: pagesImage,
-    color: 'from-indigo-500 to-violet-500'
-  }
-];
-
 export function AtomicDesignShowcase() {
+  const { t } = useLanguage();
   const [selectedStage, setSelectedStage] = useState<AtomicStage | null>(null);
+
+  const atomicStages: AtomicStage[] = [
+    {
+      id: 'tokens',
+      image: tokensImage,
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      id: 'atoms',
+      image: atomsImage,
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      id: 'molecules',
+      image: moleculesImage,
+      color: 'from-green-500 to-emerald-500'
+    },
+    {
+      id: 'organisms',
+      image: organismsImage,
+      color: 'from-amber-500 to-orange-500'
+    },
+    {
+      id: 'pages',
+      image: pagesImage,
+      color: 'from-indigo-500 to-violet-500'
+    }
+  ];
 
   return (
     <>
-      <div className="space-y-6 sm:space-y-8">
+      {/* Horizontal Grid Layout */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
         {atomicStages.map((stage, index) => (
           <motion.div
-            key={stage.title}
+            key={stage.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            transition={{ delay: index * 0.08 }}
             className="group"
           >
             {/* Stage Header */}
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r ${stage.color} text-white font-bold text-sm sm:text-base shadow-lg`}>
+            <div className="flex items-center gap-2 mb-2 sm:mb-3">
+              <div className={`flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-r ${stage.color} text-white font-bold text-[10px] sm:text-xs shadow-lg shrink-0`}>
                 {index + 1}
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
-                  {stage.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  {stage.description}
-                </p>
-              </div>
+              <h3 className="text-xs sm:text-sm lg:text-base font-bold text-gray-900 dark:text-white leading-tight">
+                {t(`caseStudy.atomicStages.${stage.id}.title`)}
+              </h3>
             </div>
+            
+            <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 leading-snug h-[2.8rem] sm:h-[3.2rem] overflow-hidden">
+              {t(`caseStudy.atomicStages.${stage.id}.description`)}
+            </p>
 
             {/* Image Container */}
             <motion.div
-              whileHover={{ scale: 1.01 }}
-              className="relative bg-white/40 dark:bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 border border-white/40 dark:border-white/20 shadow-xl shadow-black/5 overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-black/10"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative bg-white/40 dark:bg-white/10 backdrop-blur-md rounded-lg sm:rounded-xl p-2 sm:p-2.5 lg:p-3 border border-white/40 dark:border-white/20 shadow-lg shadow-black/5 overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-black/10 aspect-[4/3]"
               onClick={() => setSelectedStage(stage)}
             >
               {/* Gradient Overlay on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-r ${stage.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`} />
+              <div className={`absolute inset-0 bg-gradient-to-r ${stage.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`} />
               
               {/* Image */}
               <img
                 src={stage.image}
-                alt={`${stage.title} - Atomic Design Component`}
-                className="w-full h-auto rounded-lg sm:rounded-xl shadow-lg"
+                alt={t(`caseStudy.atomicStages.${stage.id}.title`)}
+                className="w-full h-full object-cover rounded-md sm:rounded-lg shadow-md"
                 loading="lazy"
               />
 
               {/* Click to Expand Hint */}
-              <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-black/60 dark:bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                Click to expand
+              <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 bg-black/70 dark:bg-white/10 backdrop-blur-sm px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-white text-[9px] sm:text-[10px] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                {t('caseStudy.atomicStages.clickToExpand')}
               </div>
             </motion.div>
           </motion.div>
@@ -130,10 +127,10 @@ export function AtomicDesignShowcase() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold text-white">
-                    {selectedStage.title}
+                    {t(`caseStudy.atomicStages.${selectedStage.id}.title`)}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-300">
-                    {selectedStage.description}
+                    {t(`caseStudy.atomicStages.${selectedStage.id}.description`)}
                   </p>
                 </div>
               </div>
@@ -150,7 +147,7 @@ export function AtomicDesignShowcase() {
             <div className="overflow-auto max-h-[calc(90vh-120px)] p-4 sm:p-6">
               <img
                 src={selectedStage.image}
-                alt={`${selectedStage.title} - Full View`}
+                alt={`${selectedStage.id} - Full View`}
                 className="w-full h-auto rounded-lg sm:rounded-xl shadow-2xl"
               />
             </div>

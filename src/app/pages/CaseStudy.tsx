@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams, useNavigate } from 'react-router';
 import { motion } from 'motion/react';
-import { ArrowLeft, ExternalLink, Check } from 'lucide-react';
-import { getProjectById } from '../data/projects';
+import { ArrowLeft, ExternalLink, Check, ArrowRight, TrendingUp, Boxes, Building2 } from 'lucide-react';
+import { getProjectById, getAllProjects } from '../data/projects';
 import { haptic } from '../utils/haptics';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -27,6 +27,8 @@ export default function CaseStudy() {
 
   const project = getProjectById(projectSlug || '');
   const projectTranslationData = getProjectData(projectSlug || '');
+  const allProjects = getAllProjects();
+  const otherProjects = allProjects.filter(p => p.id !== projectSlug);
 
   // Scroll to top when component mounts or projectSlug changes
   useEffect(() => {
@@ -510,6 +512,33 @@ export default function CaseStudy() {
               <p className={`text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 ${textAlign}`}>
                 {projectTranslationData.solution.description}
               </p>
+
+              {/* Atomic Design Showcase - Only for Design System - MOVED TO TOP */}
+              {project.id === 'design-system' && (
+                <div className="mb-8 sm:mb-10">
+                  <div className="mb-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {t('caseStudy.atomicDesignHierarchy')}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                      {t('caseStudy.atomicDesignDesc')}
+                    </p>
+                  </div>
+                  <AtomicDesignShowcase />
+                </div>
+              )}
+
+              {/* Before & After Comparison - Only for Reservation System - MOVED TO TOP */}
+              {project.id === 'reservation-system' && (
+                <div className="mb-8 sm:mb-10">
+                  <div className="mb-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {t('caseStudy.beforeAfter')}
+                    </h3>
+                  </div>
+                  <AtomicDesignGallery />
+                </div>
+              )}
               
               <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                 {projectTranslationData.solution.features.map((feature, i) => (
@@ -539,6 +568,126 @@ export default function CaseStudy() {
                 ))}
               </div>
             </GlassSection>
+
+            {/* Other Projects */}
+            {otherProjects.length > 0 && (
+              <motion.section
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+                className="mb-12 sm:mb-16"
+              >
+                <div className="bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-12 border border-white/40 dark:border-white/20 shadow-2xl shadow-black/5">
+                  <div className="mb-6 sm:mb-8">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                      {t('caseStudy.otherProjects')}
+                    </h2>
+                    <p className={`text-sm sm:text-base text-gray-600 dark:text-gray-400 ${textAlign}`}>
+                      {t('caseStudy.exploreMore')}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                    {otherProjects.map((otherProject, index) => {
+                      const otherProjectData = getProjectData(otherProject.id);
+                      
+                      // Define icon and color for each project
+                      const projectMeta = {
+                        'reservation-flow': {
+                          Icon: TrendingUp,
+                          gradient: 'from-green-400 to-emerald-500',
+                          bgGradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20'
+                        },
+                        'reservation-system': {
+                          Icon: TrendingUp,
+                          gradient: 'from-green-400 to-emerald-500',
+                          bgGradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20'
+                        },
+                        'design-system': {
+                          Icon: Boxes,
+                          gradient: 'from-purple-400 to-indigo-500',
+                          bgGradient: 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20'
+                        },
+                        'ihotelhub': {
+                          Icon: Building2,
+                          gradient: 'from-blue-400 to-cyan-500',
+                          bgGradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
+                        }
+                      };
+
+                      const meta = projectMeta[otherProject.id as keyof typeof projectMeta] || projectMeta['design-system'];
+                      const ProjectIcon = meta.Icon;
+
+                      return (
+                        <motion.div
+                          key={otherProject.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 }}
+                          whileHover={{ scale: 1.02, y: -4 }}
+                          onClick={() => {
+                            haptic('light');
+                            navigate(`/case-study/${otherProject.id}`);
+                          }}
+                          className="group cursor-pointer"
+                        >
+                          <div className="bg-white/50 dark:bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl overflow-hidden border border-white/40 dark:border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300">
+                            
+                            {/* Icon Header */}
+                            <div className={`relative h-32 sm:h-36 overflow-hidden bg-gradient-to-br ${meta.bgGradient} flex items-center justify-center`}>
+                              {/* Animated Background Circles */}
+                              <div className="absolute inset-0 overflow-hidden">
+                                <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${meta.gradient} rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700`} />
+                                <div className={`absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br ${meta.gradient} rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700`} />
+                              </div>
+                              
+                              {/* Icon */}
+                              <div className="relative z-10">
+                                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${meta.gradient} flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+                                  <ProjectIcon className="w-8 h-8 sm:w-10 sm:h-10 text-white" strokeWidth={2} />
+                                </div>
+                              </div>
+
+                              {/* View Arrow - appears on hover */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
+                                <div className="flex items-center gap-1.5 text-white font-medium text-xs sm:text-sm">
+                                  <span>{t('caseStudy.viewProject')}</span>
+                                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Project Info */}
+                            <div className="p-4 sm:p-5">
+                              <h3 className={`text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors ${textAlign}`}>
+                                {otherProjectData.title}
+                              </h3>
+                              <p className={`text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed mb-3 ${textAlign}`}>
+                                {otherProjectData.shortDesc}
+                              </p>
+                              
+                              {/* Tags */}
+                              <div className={`flex flex-wrap gap-1.5 ${language === 'fa' ? 'justify-end' : 'justify-start'}`}>
+                                {otherProject.tags.slice(0, 3).map((tag, tagIndex) => (
+                                  <span
+                                    key={tagIndex}
+                                    className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-[10px] sm:text-xs font-medium"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </motion.section>
+            )}
 
           </div>
 

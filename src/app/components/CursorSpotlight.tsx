@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring } from 'motion/react';
 
 export function CursorSpotlight() {
   const [isMounted, setIsMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
@@ -11,7 +12,24 @@ export function CursorSpotlight() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    // Check if desktop
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkDesktop();
     setIsMounted(true);
+
+    window.addEventListener('resize', checkDesktop);
+
+    return () => {
+      window.removeEventListener('resize', checkDesktop);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Only add mousemove listener on desktop
+    if (!isDesktop) return;
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
@@ -23,14 +41,12 @@ export function CursorSpotlight() {
     return () => {
       window.removeEventListener('mousemove', moveCursor);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isDesktop]);
 
-  // Only show on desktop
-  if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+  // Don't render on mobile at all
+  if (!isMounted || !isDesktop) {
     return null;
   }
-
-  if (!isMounted) return null;
 
   return (
     <motion.div

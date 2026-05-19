@@ -5,8 +5,6 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { Home } from './pages/Home';
 import CaseStudy from './pages/CaseStudy';
-import { Projects } from './pages/Projects';
-import { Admin } from './pages/Admin';
 import { SkipToContent } from './components/SkipToContent';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import './i18n/config'; // Initialize i18n before app renders
@@ -23,8 +21,8 @@ export default function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/case-study/:id" element={<CaseStudy />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/admin" element={<Admin />} />
+                  {/* 404 - Redirect to home */}
+                  <Route path="*" element={<Home />} />
                 </Routes>
                 <Toaster 
                   position="top-center" 

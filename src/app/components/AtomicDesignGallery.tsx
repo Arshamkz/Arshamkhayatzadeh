@@ -5,12 +5,12 @@ import { X } from 'lucide-react';
 import { haptic } from '../utils/haptics';
 import { useLanguage } from '../contexts/LanguageContext';
 
-// Import all Atomic Design stage images
-import tokensImage from 'figma:asset/e8a0cfc09bd610d7ec46941c996412738142cc5b.png';
-import atomsImage from 'figma:asset/cf37d6872859564b6b829947c33f849e68cb88de.png';
-import moleculesImage from 'figma:asset/b774e37bec1b852c045c3b520fb9eeebcd50608e.png';
-import organismsImage from 'figma:asset/f0c798f47756faae319b5e95761318314fa5e8d0.png';
-import pagesImage from 'figma:asset/9eba92a5b0c1de4014a5a740d2765f7427dc252b.png';
+// Placeholder images for Atomic Design stages - replace with actual assets
+const tokensImage = 'https://via.placeholder.com/600x400/a855f7/ffffff?text=Tokens';
+const atomsImage = 'https://via.placeholder.com/600x400/3b82f6/ffffff?text=Atoms';
+const moleculesImage = 'https://via.placeholder.com/600x400/06b6d4/ffffff?text=Molecules';
+const organismsImage = 'https://via.placeholder.com/600x400/10b981/ffffff?text=Organisms';
+const pagesImage = 'https://via.placeholder.com/600x400/f59e0b/ffffff?text=Pages';
 
 interface AtomicLevel {
   id: number;

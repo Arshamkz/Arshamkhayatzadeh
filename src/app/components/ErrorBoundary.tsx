@@ -10,6 +10,8 @@ interface State {
   hasError: boolean;
   error: Error | null;
   errorInfo: ErrorInfo | null;
+  errorCount: number;
+  lastError: string;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
@@ -19,6 +21,8 @@ export class ErrorBoundary extends Component<Props, State> {
       hasError: false,
       error: null,
       errorInfo: null,
+      errorCount: 0,
+      lastError: ''
     };
   }
 
@@ -28,21 +32,28 @@ export class ErrorBoundary extends Component<Props, State> {
       hasError: true,
       error,
       errorInfo: null,
+      errorCount: 0,
+      lastError: ''
     };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // Log error to console in development
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    // Log error in development only
+    if (import.meta.env.DEV) {
+      console.error('ErrorBoundary caught an error:', error, errorInfo);
+    }
     
-    // Update state with error details
+    // Track error for analytics
     this.setState({
-      error,
-      errorInfo,
+      errorCount: this.state.errorCount + 1,
+      lastError: error.message
     });
 
-    // TODO: Log to error tracking service (Sentry, LogRocket, etc.)
-    // Example: logErrorToService(error, errorInfo);
+    // In production, you should log to an error tracking service
+    // Example: Sentry, LogRocket, etc.
+    // if (import.meta.env.PROD) {
+    //   logErrorToService(error, errorInfo);
+    // }
   }
 
   handleReset = () => {
@@ -50,6 +61,8 @@ export class ErrorBoundary extends Component<Props, State> {
       hasError: false,
       error: null,
       errorInfo: null,
+      errorCount: 0,
+      lastError: ''
     });
   };
 

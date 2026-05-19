@@ -13,7 +13,10 @@ import { ResumePreviewModal } from '../components/ResumePreviewModal';
 import { BackToTop } from '../components/BackToTop';
 import { LanguageToggle } from '../components/LanguageToggle';
 import DotGrid from '../components/DotGrid';
+import { AIChatbot } from '../components/AIChatbot';
 import { useState, useRef } from 'react';
+// Placeholder profile image - replace with actual profile photo
+const profileImage = 'https://via.placeholder.com/200x200/6366f1/ffffff?text=Profile';
 
 export function Home() {
   const navigate = useNavigate();
@@ -63,8 +66,8 @@ export function Home() {
 
       <div className="min-h-screen bg-white dark:bg-[#0a1628] relative overflow-x-hidden">
         
-        {/* Dot Grid Wallpaper */}
-        <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Dot Grid Wallpaper - Disabled for performance */}
+        {/* <div className="fixed inset-0 pointer-events-none z-0">
           <DotGrid
             dotSize={4}
             gap={20}
@@ -76,7 +79,7 @@ export function Home() {
             resistance={800}
             returnDuration={1.8}
           />
-        </div>
+        </div> */}
 
         {/* Theme Toggle */}
         <div className="fixed top-6 right-6 z-50">
@@ -109,11 +112,33 @@ export function Home() {
           <section className="min-h-screen flex flex-col items-center justify-center px-6 md:px-12 py-20">
             <div className="max-w-4xl mx-auto text-center">
               
+              {/* Profile Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="mb-8 flex justify-center"
+              >
+                <div className="relative group">
+                  {/* Glow effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                  
+                  {/* Image container with glassmorphism */}
+                  <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-white/60 dark:bg-white/10 backdrop-blur-md border-4 border-white/50 dark:border-white/20 shadow-2xl shadow-blue-500/20">
+                    <img
+                      src={profileImage}
+                      alt="Arsham Khayatzadeh"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
               {/* Name */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4"
               >
                 <span className="text-gray-900 dark:text-white">Arsham</span>
@@ -127,7 +152,7 @@ export function Home() {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8"
               >
                 {t('hero.title')}
@@ -137,7 +162,7 @@ export function Home() {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
               >
                 {t('hero.subtitle')}
@@ -147,7 +172,7 @@ export function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
                 className="flex flex-wrap items-center justify-center gap-3"
               >
                 <button
@@ -227,13 +252,11 @@ export function Home() {
                     >
                       <div className="relative h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-gray-200/50 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/10 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
                         
-                        {/* Featured Badge - Experienced Leadership */}
+                        {/* Featured Badge */}
                         {project.featured && (
                           <div className="absolute -top-3 -right-3 z-10">
                             <div className="relative">
-                              {/* Glow effect */}
                               <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full blur-md opacity-60 animate-pulse" />
-                              {/* Badge */}
                               <div className="relative bg-gradient-to-r from-amber-400 to-orange-500 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg font-bold text-[10px] sm:text-xs tracking-wide flex items-center gap-0.5 sm:gap-1">
                                 <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -350,6 +373,9 @@ export function Home() {
       />
 
       <BackToTop />
+
+      {/* AI Chatbot */}
+      <AIChatbot />
     </>
   );
 }
