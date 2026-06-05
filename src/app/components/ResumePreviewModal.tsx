@@ -30,14 +30,14 @@ interface ResumeData {
 const defaultResumeDataEN: ResumeData = {
   name: 'Arsham Khayatzadeh',
   title: 'Product/UI-UX Designer',
-  location: 'Tehran, Iran',
+  location: 'Mashhad, Iran',
   timezone: 'GMT +3:30',
   phone: '+98 936 936 9768',
   email: 'arsham.kz770@gmail.com',
   linkedin: 'linkedin.com/in/arsham-khayatzadeh',
   portfolio: 'arsham-portfolio.com',
   summary:
-    'Product Designer specializing in data-driven UX and conversion optimization for high-traffic B2C products. 1.5+ years of experience designing end-to-end user journeys on an online booking platform with 500K+ MAU. Proven impact includes a 20% increase in conversion rates and a 30% reduction in operational errors through research-led redesigns, experimentation, and scalable design systems.',
+    'Product Designer specializing in data-driven UX, conversion optimization, and scalable design systems for high-traffic B2C products. 3 years of experience designing end-to-end user journeys, shipping redesigns that increased booking conversion by 20% and reduced operational errors by 41% on a 500K+ MAU platform. Early adopter of AI-augmented design workflows. Expert in cross-functional collaboration (PM, Engineering, Data teams) and research-driven product development.',
   experience: [
     {
       title: 'Product Designer',

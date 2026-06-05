@@ -52,9 +52,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Apply theme to document
   useEffect(() => {
     const root = document.documentElement;
+
+    // Simple, reliable theme switch without animations
     root.classList.remove('light', 'dark');
     root.classList.add(actualTheme);
-    
+
     // Update meta theme-color for mobile browsers
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
