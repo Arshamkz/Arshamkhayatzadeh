@@ -2,11 +2,12 @@ import { motion } from 'motion/react';
 import { useState } from 'react';
 import { X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import chipsScreenshot from '../../imports/image-3.png';
 
 // Placeholder images for Atomic Design stages - replace with actual assets
 const tokensImage = 'https://via.placeholder.com/600x400/a855f7/ffffff?text=Tokens';
 const atomsImage = 'https://via.placeholder.com/600x400/3b82f6/ffffff?text=Atoms';
-const moleculesImage = 'https://via.placeholder.com/600x400/06b6d4/ffffff?text=Molecules';
+const moleculesImage = chipsScreenshot;
 const organismsImage = 'https://via.placeholder.com/600x400/10b981/ffffff?text=Organisms';
 const pagesImage = 'https://via.placeholder.com/600x400/f59e0b/ffffff?text=Pages';
 

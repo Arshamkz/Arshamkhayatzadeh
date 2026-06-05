@@ -4,7 +4,8 @@ const reservationFlowBeforeAfter = 'https://via.placeholder.com/800x600/8b5cf6/f
 const iHotelHubDesktop = 'https://via.placeholder.com/800x600/3b82f6/ffffff?text=iHotelHub+Desktop';
 const iHotelHubMobile = 'https://via.placeholder.com/400x800/06b6d4/ffffff?text=iHotelHub+Mobile';
 const iHotelHubMobileFullPage = 'https://via.placeholder.com/400x800/0ea5e9/ffffff?text=iHotelHub+Full';
-const designSystemThumbnail = 'https://via.placeholder.com/800x600/10b981/ffffff?text=Design+System';
+import chipsScreenshot from '../../imports/image-3.png';
+const designSystemThumbnail = chipsScreenshot;
 const designSystemGallery = 'https://via.placeholder.com/800x600/059669/ffffff?text=Design+Gallery';
 
 export interface Project {
@@ -505,6 +506,98 @@ export const projects: Project[] = [
       'AI tools are productivity multipliers, not replacements—they accelerated UI generation but required heavy human oversight (strategic decisions, technical validation, quality control).',
       'Documentation of failure modes is as valuable as success patterns—React-to-Pure conversion learnings prevented similar issues on 2 subsequent projects.',
       'Ruthless prioritization under constraints reveals core value—cutting 60% of features actually improved MVP clarity and focus.'
+    ]
+  },
+  // IranHotel PLP Redesign
+  {
+    id: 'iranhotel-plp',
+    title: 'IranHotel PLP Redesign',
+    shortDesc: 'Redesigning the hotel listing page to reduce cognitive load and improve booking conversion',
+    description: 'Redesigned the hotel listing page (PLP) for IranHotel—a nationwide B2C/B2B booking platform—to shift user focus from browsing to deciding.',
+    image: 'https://via.placeholder.com/800x600/0f172a/6366f1?text=IranHotel+PLP',
+    coverImage: 'https://via.placeholder.com/800x600/0f172a/6366f1?text=Hotel+Listing+Page',
+    tags: ['Product Design', 'UX Research', 'Conversion Optimization', 'Information Architecture'],
+    role: 'Product Designer',
+    collaboration: 'PM, PO, 2 Developers, QA',
+    timeline: '2 months',
+    company: 'IranHotel',
+    context: 'IranHotel is a nationwide hotel booking platform offering reservation services for both B2C and B2B users. I worked as the sole Product Designer alongside a PM, PO, two developers, and QA over a 2-month redesign of the hotel listing page (PLP). The primary business objective was simple but critical: improve conversion and reduce drop-off at the most decisive stage of the booking funnel.',
+    problem: {
+      description: 'The existing PLP was not failing because users couldn\'t find hotels. It was failing because users couldn\'t decide efficiently.',
+      issues: [
+        'High cognitive load during hotel comparison',
+        'Interaction ambiguity between images, cards, and actions',
+        'Inefficient information density leading to excessive scrolling'
+      ],
+      goals: [
+        'Reduce drop-off rate',
+        'Improve card CTR',
+        'Increase conversion rate',
+        'Improve information clarity',
+        'Reduce confusion',
+        'Improve engagement'
+      ]
+    },
+    research: {
+      description: 'User behavior analysis revealed a fundamental shift in our understanding of the problem—from navigation to decision-making.',
+      methods: [
+        'Users scan before deciding—content hierarchy matters more than navigation',
+        'Comparison drives decisions—users needed efficient side-by-side evaluation',
+        'Ambiguity reduces confidence—unclear interactions eroded trust',
+        'Navigation can create funnel leakage—excess paths pull users away from booking',
+        'Higher density improves comparison when hierarchy is clear'
+      ],
+      insights: [
+        'Initially, we believed the primary issue was related to interface organization and navigation usability',
+        'After reviewing user behavior, we discovered that navigation was not helping users complete their booking journey—it was pulling them away from the decision-making process',
+        'This shifted our focus from navigation optimization to decision optimization'
+      ]
+    },
+    designDecisions: {
+      description: 'Every decision was driven by the principle: optimize for scanning and deciding, not browsing.',
+      decisions: [
+        'Hotel card redesign — denser, more scannable layout',
+        'Quick filters added — faster context switching without full-page reload',
+        'Unified interaction model — consistent tap/click behavior across cards',
+        'Footer navigation removed — eliminated funnel leakage path',
+        'Sticky filter behavior — filters always accessible without scroll',
+        'Desktop grid/list view toggle — user-controlled density preference'
+      ],
+      note: 'Trade-offs were carefully considered: density vs. focus, exploration vs. conversion, discoverability vs. screen real estate.'
+    },
+    solution: {
+      description: 'The final solution transformed the PLP from a browsing interface into a decision-making environment.',
+      features: [
+        'Redesigned hotel cards with better information hierarchy',
+        'Added Quick Filters for faster comparison',
+        'Unified interaction model across all card elements',
+        'Removed footer navigation to keep users in the booking funnel',
+        'Sticky filter behavior for constant accessibility',
+        'Desktop grid and list view modes'
+      ],
+      implementation: 'The redesign was driven by the insight that a hotel listing page is not a collection of options—it is a decision-making environment. Every element was evaluated through the lens of: does this help users decide faster?'
+    },
+    results: {
+      description: 'Post-launch observation showed measurable improvement in user behavior and decision efficiency.',
+      outcomes: [
+        'Reduced scrolling fatigue across both mobile and desktop',
+        'More efficient scanning—users reached decision points faster',
+        'Fewer accidental interactions due to unified interaction model',
+        'More focused decision-making behavior observed in session recordings'
+      ],
+      metrics: [
+        { label: 'Reduced Drop-off', value: '↓', color: 'from-blue-500 to-indigo-500' },
+        { label: 'Improved CTR', value: '↑', color: 'from-indigo-500 to-purple-500' },
+        { label: 'Project Duration', value: '2 Mo', color: 'from-purple-500 to-pink-500' },
+        { label: 'Team Size', value: '6', color: 'from-pink-500 to-rose-500' }
+      ]
+    },
+    learnings: [
+      'The problem was not visual. It was behavioral. Users did not need more options—they needed a better environment for making decisions.',
+      'Navigation can be a silent conversion killer—removing the footer nav improved funnel focus more than any visual change.',
+      'Increasing information density can improve comparison efficiency when hierarchy is clear—this challenged our initial assumption that "less is more."',
+      'A hotel listing page is not a collection of options. It is a decision-making environment.',
+      'Hiding filters freed up screen space but reduced discoverability—trade-offs must be validated, not assumed.'
     ]
   }
 ];

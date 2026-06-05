@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams, useNavigate } from 'react-router';
 import { motion } from 'motion/react';
-import { ArrowLeft, ExternalLink, Check, ArrowRight, TrendingUp, Boxes, Building2 } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Check, ArrowRight, TrendingUp, Boxes, Building2, Hotel } from 'lucide-react';
 import { getProjectById, getAllProjects } from '../data/projects';
 import { haptic } from '../utils/haptics';
 import { useTheme } from '../contexts/ThemeContext';
@@ -12,6 +12,9 @@ import { ScrollProgress } from '../components/ScrollProgress';
 import { CursorSpotlight } from '../components/CursorSpotlight';
 import { AtomicDesignGallery } from '../components/AtomicDesignGallery';
 import { AtomicDesignShowcase } from '../components/AtomicDesignShowcase';
+import { ChipsShowcase } from '../components/ChipsShowcase';
+import { ChipsDocHeader } from '../components/ChipsDocHeader';
+import { IranHotelPLPShowcase } from '../components/IranHotelPLPShowcase';
 import { BackToTop } from '../components/BackToTop';
 import { LanguageToggle } from '../components/LanguageToggle';
 import DotGrid from '../components/DotGrid';
@@ -513,7 +516,7 @@ export default function CaseStudy() {
                 {projectTranslationData.solution.description}
               </p>
 
-              {/* Atomic Design Showcase - Only for Design System - MOVED TO TOP */}
+              {/* Atomic Design 5-stage grid — TOP of design-system */}
               {project.id === 'design-system' && (
                 <div className="mb-8 sm:mb-10">
                   <div className="mb-6">
@@ -528,6 +531,14 @@ export default function CaseStudy() {
                 </div>
               )}
 
+              {/* Chips — documentation header + interactive playground */}
+              {project.id === 'design-system' && (
+                <div className="mb-8 sm:mb-10 space-y-6">
+                  <ChipsDocHeader />
+                  <ChipsShowcase />
+                </div>
+              )}
+
               {/* Before & After Comparison - Only for Reservation System - MOVED TO TOP */}
               {project.id === 'reservation-system' && (
                 <div className="mb-8 sm:mb-10">
@@ -537,6 +548,13 @@ export default function CaseStudy() {
                     </h3>
                   </div>
                   <AtomicDesignGallery />
+                </div>
+              )}
+
+              {/* IranHotel PLP Interactive Showcase */}
+              {project.id === 'iranhotel-plp' && (
+                <div className="mb-8 sm:mb-10">
+                  <IranHotelPLPShowcase />
                 </div>
               )}
               
@@ -613,6 +631,11 @@ export default function CaseStudy() {
                           Icon: Building2,
                           gradient: 'from-blue-400 to-cyan-500',
                           bgGradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
+                        },
+                        'iranhotel-plp': {
+                          Icon: Hotel,
+                          gradient: 'from-indigo-500 to-purple-600',
+                          bgGradient: 'from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20'
                         }
                       };
 
