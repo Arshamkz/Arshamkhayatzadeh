@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { Toaster } from 'sonner';
 import { HelmetProvider } from 'react-helmet-async';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { Home } from './pages/Home';
@@ -38,6 +39,7 @@ export default function App() {
           </LanguageProvider>
         </ThemeProvider>
       </HelmetProvider>
+      <Analytics />
     </ErrorBoundary>
   );
 }
