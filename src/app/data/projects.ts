@@ -157,7 +157,7 @@ export const projects: Project[] = [
         {
           title: 'Developer Friction on Pixel-Perfect Standards',
           issue: 'Enforced strict design QA (even 2px spacing errors were flagged), which frustrated developers who felt micromanaged. Issues kept reappearing after "fixes," causing rework fatigue.',
-          solution: 'Held alignment meeting with PO, PM, and dev team. Established "2-rejection rule": designs rejected more than twice for quality issues required root-cause analysis. Developers improved attention to detail; rework decreased by 60%.'
+          solution: 'Held alignment meeting with PO, PM, and dev team. Established "2-rejection rule": designs rejected more than twice for quality issues required root-cause analysis. Developers improved attention to detail; rework decreased significantly.'
         },
         {
           title: 'Post-Launch Monitoring Time Investment',
@@ -167,9 +167,9 @@ export const projects: Project[] = [
       ],
       impact: [
         'Defined reusable 7-step process now adopted by design team for high-stakes projects',
-        'Two-stage user testing (pre-design + staging) caught critical mobile bug that would have caused 15-20% mobile conversion loss',
-        'Pixel-perfect quality standards improved overall platform design consistency (QA rejection rate dropped 60% after "2-rejection rule")',
-        'Stakeholder alignment meetings reduced post-launch scope creep by 80% (clearer expectations upfront)',
+        'Two-stage user testing (pre-design + staging) caught critical mobile bug that would have significantly impacted conversion',
+        'Pixel-perfect quality standards improved overall platform design consistency (QA rejection rate decreased notably after "2-rejection rule")',
+        'Stakeholder alignment meetings significantly reduced post-launch scope creep (clearer expectations upfront)',
         'Process documentation enabled junior designer to replicate framework on checkout flow redesign (shipped independently with 92% quality score)'
       ]
     },
@@ -206,23 +206,23 @@ export const projects: Project[] = [
         'Validated results with PM against business KPIs'
       ],
       outcomes: [
-        'Booking completion rate increased from 12.3% to 14.8% (20% relative lift, 2.5pp absolute)',
-        'Average booking time reduced from 7m 12s to 3m 5s (57% faster)',
-        'Rage click incidents decreased by 85% (from 8.2% to 1.2% of sessions)',
-        'Form abandonment at payment step dropped from 34% to 18%',
-        'Customer support tickets related to booking confusion reduced by 41%'
+        'Improved booking completion rate through streamlined user flow',
+        'Significantly reduced average booking time by removing unnecessary steps',
+        'Decreased user frustration signals (rage clicks and hesitation)',
+        'Reduced form abandonment at payment step',
+        'Lowered customer support tickets related to booking confusion'
       ],
       metrics: [
-        { label: 'Completion Rate', value: '+20%', color: 'from-green-500 to-emerald-500' },
-        { label: 'Time Saved', value: '-57%', color: 'from-blue-500 to-cyan-500' },
-        { label: 'Rage Clicks', value: '-85%', color: 'from-purple-500 to-indigo-500' },
-        { label: 'Support Tickets', value: '-41%', color: 'from-amber-500 to-orange-500' }
+        { label: 'User Experience', value: 'Improved', color: 'from-green-500 to-emerald-500' },
+        { label: 'Booking Time', value: 'Reduced', color: 'from-blue-500 to-cyan-500' },
+        { label: 'User Friction', value: 'Decreased', color: 'from-purple-500 to-indigo-500' },
+        { label: 'Support Load', value: 'Lower', color: 'from-amber-500 to-orange-500' }
       ]
     },
     
     learnings: [
       'Removing the "Passenger Details" step and merging it with "Review" eliminated the #1 drop-off point—sometimes the best design decision is deletion',
-      'Showing real-time price updates during form completion increased trust by 28% (measured via exit surveys)—transparency beats polish',
+      'Showing real-time price updates during form completion significantly increased user trust—transparency beats polish',
       'Engineers flagged a backend constraint on auto-fill that would\'ve delayed launch by 2 weeks—collaborating early saved us from rebuilding designs',
       'Users in Iran expect different payment flows than international users—localization isn\'t just translation, it\'s behavioral adaptation'
     ]
@@ -230,7 +230,7 @@ export const projects: Project[] = [
   {
     id: 'design-system',
     title: 'Design System Implementation',
-    shortDesc: 'Reduced feature design time from 5 days to 3 days through unified component library',
+    shortDesc: 'Built comprehensive design system to improve consistency and accelerate design-to-development workflow',
     description: 'Built a comprehensive atomic design system for IranHotelOnline to standardize UI components and accelerate design-to-development workflow.',
     image: designSystemThumbnail,
     // No coverImage - skip hero section in case study detail page
@@ -315,18 +315,18 @@ export const projects: Project[] = [
         'Analyzed QA bug reports for UI consistency issues'
       ],
       outcomes: [
-        'Design velocity increased by 40% (avg. feature design time: 5 days → 3 days)',
-        'UI inconsistencies reduced by 80% (measured via design QA audits)',
-        'Designer-developer handoff time cut from 2 days to 1 day (50% reduction)',
-        'New team members onboarding 60% faster (4 weeks → 1.5 weeks to productivity)',
-        'Design QA issues decreased by 65% (18 avg. issues/sprint → 6)',
-        'Team confidence score increased from 6.2/10 to 8.7/10 (post-survey)'
+        'Design velocity improved significantly with reusable components',
+        'UI inconsistencies across the platform greatly reduced',
+        'Designer-developer handoff process streamlined',
+        'New team members onboarding faster with documented patterns',
+        'Design QA issues decreased due to standardized components',
+        'Team confidence and workflow efficiency improved (measured via post-survey)'
       ],
       metrics: [
-        { label: 'Design Velocity', value: '+40%', color: 'from-green-500 to-emerald-500' },
-        { label: 'Inconsistencies', value: '-80%', color: 'from-blue-500 to-cyan-500' },
-        { label: 'Handoff Time', value: '-50%', color: 'from-purple-500 to-indigo-500' },
-        { label: 'Onboarding', value: '+60%', color: 'from-amber-500 to-orange-500' }
+        { label: 'Design Velocity', value: 'Improved', color: 'from-green-500 to-emerald-500' },
+        { label: 'Consistency', value: 'Higher', color: 'from-blue-500 to-cyan-500' },
+        { label: 'Handoff Time', value: 'Faster', color: 'from-purple-500 to-indigo-500' },
+        { label: 'Onboarding', value: 'Easier', color: 'from-amber-500 to-orange-500' }
       ]
     },
     
@@ -335,7 +335,7 @@ export const projects: Project[] = [
       'The "Component Playground" in Figma became the most-used feature (78% weekly usage)—designers learn by doing, not reading docs',
       'We initially built 40 components, but only 12 were used regularly—start small, expand based on real demand',
       'Documentation with real project examples (not abstract demos) increased adoption by 3x—context is king',
-      'Monthly "office hours" for Q&A drove 60% of system improvements—adoption requires ongoing evangelism, not just delivery'
+      'Monthly "office hours" for Q&A drove many system improvements—adoption requires ongoing evangelism, not just delivery'
     ]
   },
   {
@@ -388,7 +388,7 @@ export const projects: Project[] = [
         'Travel agencies prioritize speed—search and booking must be fast and predictable',
         'Hotels needed dead-simple onboarding (most are non-technical small business owners)',
         'Trust signals (security badges, clear pricing, professional aesthetics) were non-negotiable',
-        'AI tools could accelerate UI generation (~40% faster), but strategic UX still required human judgment',
+        'AI tools can accelerate UI generation, but strategic UX decisions still require human judgment and context',
         'Unknown risk: AI tools output React code only—backend team compatibility unknown at start'
       ]
     },
@@ -484,7 +484,7 @@ export const projects: Project[] = [
         'Platform launched on time—CEO successfully presented at international pitch meeting',
         'Early pilot users (8 hotels, 5 agencies) validated core booking flow usability (no critical UX bugs reported)',
         'Pure HTML/CSS/JS conversion succeeded—codebase performed stable in production (zero code-related crashes in first month)',
-        'AI-assisted design reduced initial design time by ~40% vs. traditional workflow (saved ~50 hours)',
+        'AI-assisted design significantly reduced initial design time vs. traditional workflow',
         'Post-launch feature velocity increased 2x thanks to reusable component system',
         'Senior Developer feedback: "Pure code quality was production-ready—conversion process worked"',
         'CEO feedback: "Design quality exceeded expectations for 3-week sprint under crisis conditions"',
@@ -505,7 +505,7 @@ export const projects: Project[] = [
       'Transparent stakeholder communication during crisis is critical—CEO appreciated honesty about React-to-Pure challenge and supported solution-focused approach.',
       'AI tools are productivity multipliers, not replacements—they accelerated UI generation but required heavy human oversight (strategic decisions, technical validation, quality control).',
       'Documentation of failure modes is as valuable as success patterns—React-to-Pure conversion learnings prevented similar issues on 2 subsequent projects.',
-      'Ruthless prioritization under constraints reveals core value—cutting 60% of features actually improved MVP clarity and focus.'
+      'Ruthless prioritization under constraints reveals core value—cutting most features actually improved MVP clarity and focus.'
     ]
   },
   // IranHotel PLP Redesign

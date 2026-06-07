@@ -42,17 +42,33 @@
   }
 }
 
-/* 3. ENHANCED FOCUS INDICATORS - WCAG AAA requires 2px minimum */
+/* 3. ENHANCED FOCUS INDICATORS - Responsive for mobile and desktop */
+/* Mobile: Smaller focus rings to prevent overlap */
 *:focus-visible {
-  outline: 3px solid currentColor !important;
-  outline-offset: 3px !important;
+  outline: 2px solid currentColor !important;
+  outline-offset: 2px !important;
 }
 
 button:focus-visible,
 a:focus-visible,
 [role="button"]:focus-visible {
-  outline: 3px solid #6366f1 !important;
-  outline-offset: 4px !important;
+  outline: 2px solid #6366f1 !important;
+  outline-offset: 2px !important;
+}
+
+/* Desktop: Larger focus rings for clarity */
+@media (min-width: 640px) {
+  *:focus-visible {
+    outline: 3px solid currentColor !important;
+    outline-offset: 3px !important;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 3px solid #6366f1 !important;
+    outline-offset: 4px !important;
+  }
 }
 
 /* 4. SKIP LINKS - بهبود یافته */
@@ -123,27 +139,48 @@ a:focus-visible,
   }
 }
 
-/* 8. TOUCH TARGET SIZE - AAA requires 48x48px minimum */
-button,
-a,
-input,
-select,
-textarea,
-[role="button"],
-[role="link"] {
-  min-width: 48px;
-  min-height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* 8. TOUCH TARGET SIZE - Responsive approach for mobile and desktop */
+/* Mobile: 44x44px minimum (touch devices) */
+@media (hover: none) and (pointer: coarse) {
+  button:not(.compact),
+  a:not(.compact):not(p a):not(li a),
+  input[type="button"]:not(.compact),
+  input[type="submit"]:not(.compact),
+  select:not(.compact),
+  [role="button"]:not(.compact) {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Desktop: 48x48px minimum */
+@media (hover: hover) and (pointer: fine) {
+  button:not(.compact),
+  a:not(.compact):not(p a):not(li a),
+  input[type="button"]:not(.compact),
+  input[type="submit"]:not(.compact),
+  select:not(.compact),
+  [role="button"]:not(.compact) {
+    min-width: 48px;
+    min-height: 48px;
+  }
 }
 
 /* Exception for text links in paragraphs */
 p a,
-li a {
-  min-width: auto;
-  min-height: auto;
-  display: inline;
+li a,
+.compact {
+  min-width: auto !important;
+  min-height: auto !important;
+}
+
+/* Exceptions for specific UI patterns */
+.chip-option,
+.modal-close,
+.badge,
+[data-compact="true"] {
+  min-width: auto !important;
+  min-height: auto !important;
 }
 
 /* 9. ERROR PREVENTION - Visual indicators */

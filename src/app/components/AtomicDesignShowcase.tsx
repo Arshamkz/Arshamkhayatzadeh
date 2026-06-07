@@ -109,7 +109,7 @@ export function AtomicDesignShowcase() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl flex items-center justify-center p-2 sm:p-4"
           onClick={() => setSelectedStage(null)}
         >
           <motion.div
@@ -117,39 +117,40 @@ export function AtomicDesignShowcase() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: 'spring', damping: 25 }}
-            className="relative max-w-7xl w-full max-h-[90vh] bg-white/10 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/20 shadow-2xl overflow-hidden"
+            className="relative max-w-7xl w-full max-h-[90vh] bg-white/10 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/20 shadow-2xl overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/20">
-              <div className="flex items-center gap-3">
-                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r ${selectedStage.color} flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-lg`}>
+            <div className="flex items-center justify-between p-3 sm:p-4 md:p-6 border-b border-white/20 flex-shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 pr-2">
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r ${selectedStage.color} flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-lg flex-shrink-0`}>
                   {atomicStages.indexOf(selectedStage) + 1}
                 </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-white truncate">
                     {t(`caseStudy.atomicStages.${selectedStage.id}.title`)}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-300 line-clamp-1">
                     {t(`caseStudy.atomicStages.${selectedStage.id}.description`)}
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setSelectedStage(null)}
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                className="compact w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 flex-shrink-0"
                 aria-label="Close modal"
               >
-                <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
               </button>
             </div>
 
-            {/* Image */}
-            <div className="overflow-auto max-h-[calc(90vh-120px)] p-4 sm:p-6">
+            {/* Image - Fixed scroll behavior */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-2 sm:p-4 md:p-6" style={{ WebkitOverflowScrolling: 'touch' }}>
               <img
                 src={selectedStage.image}
                 alt={`${selectedStage.id} - Full View`}
-                className="w-full h-auto rounded-lg sm:rounded-xl shadow-2xl"
+                className="w-full h-auto rounded-lg sm:rounded-xl shadow-2xl min-h-0"
+                loading="lazy"
               />
             </div>
           </motion.div>

@@ -1,7 +1,7 @@
 {
   "reservation-flow": {
     "title": "Reservation Flow Redesign",
-    "shortDesc": "+20% reserve completion rate and cut booking time from 7 minutes to 3 minutes",
+    "shortDesc": "Streamlined booking flow through user research and iterative design, improving completion rates and reducing friction",
     "description": "Redesigned the reservation flow for IranHotelOnline, a high-traffic booking platform with 500K+ MAU, to reduce friction and improve conversion rates.",
     "tags": ["Product Design", "UX Research", "Conversion Optimization"],
     "role": "Product Designer",
@@ -70,7 +70,7 @@
         {
           "title": "Developer Friction Over Strict Standards",
           "issue": "When I enforced rigorous QA (flagging even 2px errors), developers felt I was being overly critical. After fixes, new issues appeared, leading to rework fatigue.",
-          "solution": "Held alignment session with PO, PM, and Dev. Established '2-strike rule': designs rejected more than twice for quality issues required root cause analysis. Devs improved attention to detail, and rework dropped 60%."
+          "solution": "Held alignment session with PO, PM, and Dev. Established '2-strike rule': designs rejected more than twice for quality issues required root cause analysis. Devs improved attention to detail, and rework decreased significantly."
         },
         {
           "title": "Time Investment for Post-Launch Monitoring",
@@ -80,9 +80,9 @@
       ],
       "impact": [
         "Defined a 7-step process framework now used by the design team for high-risk projects",
-        "Two-round user testing (pre-design + staging) caught a critical mobile bug that would have reduced mobile conversion by 15-20%",
-        "Strict quality standards led to more consistent design across the platform (QA rejection rate dropped 60% after '2-strike rule')",
-        "Stakeholder alignment sessions reduced post-launch change requests by 80% (expectations were clearer upfront)",
+        "Two-round user testing (pre-design + staging) caught a critical mobile bug that would have significantly impacted conversion",
+        "Strict quality standards led to more consistent design across the platform (QA rejection rate decreased notably after '2-strike rule')",
+        "Stakeholder alignment sessions significantly reduced post-launch change requests (expectations were clearer upfront)",
         "Process documentation helped a junior designer successfully adopt this framework for payment flow redesign (launched with 92% quality score)"
       ]
     },
@@ -98,7 +98,7 @@
     },
     "learnings": [
       "When we removed the 'Passenger Details' step and merged it with 'Review,' the #1 drop-off point disappeared—sometimes the best design decision is deletion, not addition",
-      "When we showed price in real-time within the form, user trust increased by 28% (measured via exit survey)—transparency matters",
+      "When we showed price in real-time within the form, user trust notably increased (measured via exit survey)—transparency matters",
       "Engineers flagged a backend constraint on autofill logic that could have delayed launch by 2 weeks—our early collaboration saved us from redesigning",
       "Iranian users expect different payment flows than international users—localization isn't just translation, it's adapting behavior"
     ]

@@ -54,13 +54,13 @@ function PropRow<T extends string>({
   return (
     <div className="flex flex-col gap-1.5">
       <span className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">{label}</span>
-      <div className="flex gap-1 flex-wrap">
+      <div className="flex gap-1 sm:gap-1.5 flex-wrap">
         {options.map(opt => (
           <button
             key={opt}
             onClick={() => onChange(opt)}
             className={[
-              'px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-100 border',
+              'compact px-2 sm:px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-100 border min-w-[60px] sm:min-w-0',
               value === opt
                 ? 'bg-[#0055FF]/10 border-[#0055FF]/35 text-[#0055FF]'
                 : 'bg-white/50 dark:bg-white/5 border-gray-200/60 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:border-gray-300 dark:hover:border-white/20',
@@ -106,7 +106,7 @@ export function ChipsShowcase() {
 
         {/* Canvas */}
         <div
-          className="flex-1 min-h-[200px] flex flex-col items-center justify-center gap-3 p-8"
+          className="flex-1 min-h-[180px] sm:min-h-[200px] flex flex-col items-center justify-center gap-2 sm:gap-3 p-4 sm:p-6 md:p-8"
           style={{ background: 'linear-gradient(135deg, #dde3ed 0%, #e8ecf4 100%)' }}
         >
           <LiveChip color={color} shape={shape} size={size} type={type} label={label || 'برچسب'} showIconL={showIconL} showIconR={showIconR} />
@@ -119,7 +119,7 @@ export function ChipsShowcase() {
         <div className="h-px md:h-auto md:w-px bg-gray-200/60 dark:bg-white/10 shrink-0" />
 
         {/* Properties panel */}
-        <div className="md:w-52 shrink-0 bg-white/50 dark:bg-white/5 backdrop-blur-sm flex flex-col">
+        <div className="w-full md:w-52 shrink-0 bg-white/50 dark:bg-white/5 backdrop-blur-sm flex flex-col">
           <div className={`flex items-center gap-2 px-4 py-2.5 border-b border-gray-200/50 dark:border-white/10 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <div className="flex gap-1">
               <div className="size-2 rounded-full bg-red-300/60" />
@@ -131,7 +131,7 @@ export function ChipsShowcase() {
             </span>
           </div>
 
-          <div className="px-4 py-4 space-y-4">
+          <div className="px-3 sm:px-4 py-3 sm:py-4 space-y-3 sm:space-y-4">
             <PropRow label="Type"  options={['Action', 'Filter'] as const}   value={type}  onChange={setType} />
             <PropRow label="Color" options={['Primary', 'Neutral'] as const}  value={color} onChange={setColor} />
             <PropRow label="Shape" options={['Default', 'Pill'] as const}     value={shape} onChange={setShape} />
@@ -139,7 +139,7 @@ export function ChipsShowcase() {
 
             <div className="flex flex-col gap-1.5">
               <span className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Icons</span>
-              <div className="flex gap-1 flex-wrap">
+              <div className="flex gap-1 sm:gap-1.5 flex-wrap">
                 {[
                   { key: 'L', label: 'Left ×', active: showIconL, toggle: () => setShowIconL(v => !v) },
                   { key: 'R', label: 'Right +', active: showIconR, toggle: () => setShowIconR(v => !v) },
@@ -148,7 +148,7 @@ export function ChipsShowcase() {
                     key={key}
                     onClick={toggle}
                     className={[
-                      'px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-100 border',
+                      'compact px-2 sm:px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-100 border min-w-[60px] sm:min-w-0',
                       active
                         ? 'bg-[#0055FF]/10 border-[#0055FF]/35 text-[#0055FF]'
                         : 'bg-white/50 dark:bg-white/5 border-gray-200/60 dark:border-white/10 text-gray-400 dark:text-gray-500 line-through hover:border-gray-300',

@@ -37,17 +37,17 @@ const defaultResumeDataEN: ResumeData = {
   linkedin: 'linkedin.com/in/arsham-khayatzadeh',
   portfolio: 'arsham-portfolio.com',
   summary:
-    'Product Designer specializing in data-driven UX, conversion optimization, and scalable design systems for high-traffic B2C products. 3 years of experience designing end-to-end user journeys, shipping redesigns that increased booking conversion by 20% and reduced operational errors by 41% on a 500K+ MAU platform. Early adopter of AI-augmented design workflows. Expert in cross-functional collaboration (PM, Engineering, Data teams) and research-driven product development.',
+    'Product Designer specializing in user-centered design, research-driven solutions, and scalable design systems. 3+ years of experience designing end-to-end user journeys for a 500K+ MAU booking platform. Focused on improving user experience through usability testing, analytics, and cross-functional collaboration with PM, Engineering, and Data teams. Experienced in building design systems and iterative optimization.',
   experience: [
     {
       title: 'Product Designer',
       company: 'IranHotelOnline',
       period: 'October 2025 – Present',
       responsibilities: [
-        'Built and scaled an Atomic Design System in Figma, reducing design iteration time by 40%.',
-        'Led data-driven redesigns using GA and Microsoft Clarity, increasing conversion rates by 20%.',
-        'Optimized reservation flows, cutting task completion time from 6 min to 2.',
-        'Worked cross-functionally with Product, Data, and Engineering teams.',
+        'Built and maintained an Atomic Design System in Figma for consistent user experiences.',
+        'Led redesign projects using analytics (GA, Microsoft Clarity) and user research to improve conversion.',
+        'Optimized reservation flows through iterative testing and user feedback.',
+        'Collaborated cross-functionally with Product, Data, and Engineering teams.',
       ],
     },
     {
@@ -169,7 +169,59 @@ export function ResumePreviewModal({ isOpen, onClose, language }: ResumePreviewM
     };
   }, [isOpen]);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    setIsDownloading(true);
+
+    try {
+      // Use html2pdf to convert the resume preview to PDF
+      const html2pdf = (await import('html2pdf.js')).default;
+
+      // Get the resume element
+      const resumeElement = document.getElementById('resume-content');
+
+      if (!resumeElement) {
+        console.error('Resume element not found');
+        setIsDownloading(false);
+        return;
+      }
+
+      // Configure PDF options
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `Arsham_Khayatzadeh_Resume_${language.toUpperCase()}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          letterRendering: true,
+          logging: false
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'portrait',
+          compress: true
+        },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+
+      // Generate and download PDF
+      await html2pdf().set(opt).from(resumeElement).save();
+
+      setTimeout(() => {
+        setIsDownloading(false);
+        onClose();
+      }, 500);
+
+    } catch (error) {
+      console.error('PDF generation error:', error);
+      setIsDownloading(false);
+      alert(language === 'en' ? 'Failed to generate PDF' : 'خطا در تولید PDF');
+    }
+  };
+
+  // Keep the old HTML download as backup (commented out)
+  const handleDownloadHTML_BACKUP = () => {
     setIsDownloading(true);
 
     // Create HTML content for the resume
@@ -379,7 +431,7 @@ export function ResumePreviewModal({ isOpen, onClose, language }: ResumePreviewM
         {/* Close button */}
         <button
           onClick={onClose}
-          className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[210] bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-3 rounded-xl text-gray-900 dark:text-white hover:bg-white dark:hover:bg-slate-800 transition-all border border-white/40 dark:border-white/20 shadow-2xl group"
+          className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[210] bg-white/90 backdrop-blur-xl p-3 rounded-xl text-gray-900 hover:bg-white transition-all border border-white/40 shadow-2xl group"
         >
           <X className="w-6 h-6 group-hover:rotate-90 transition-transform" />
         </button>
@@ -389,15 +441,15 @@ export function ResumePreviewModal({ isOpen, onClose, language }: ResumePreviewM
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="relative bg-white dark:bg-slate-900 rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col"
+          className="relative bg-white rounded-2xl border border-white/40 shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col"
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/20">
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-indigo-500/10 to-purple-500/10">
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
                 {language === 'en' ? 'Resume Preview' : 'پیش‌نمایش رزومه'}
               </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 {language === 'en' ? 'English Version' : 'نسخه فارسی'}
               </p>
             </div>
@@ -414,18 +466,18 @@ export function ResumePreviewModal({ isOpen, onClose, language }: ResumePreviewM
           {/* Resume Preview */}
           <div
             dir={isRTL ? 'rtl' : 'ltr'}
-            className="flex-1 overflow-y-auto p-6 sm:p-8 bg-gray-50 dark:bg-slate-800"
+            className="flex-1 overflow-y-auto p-6 sm:p-8 bg-gray-50"
             style={{
               scrollbarWidth: 'thin',
               scrollbarColor: 'rgba(99, 102, 241, 0.3) rgba(0,0,0,0.1)'
             }}
           >
-            <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-6 sm:p-10 max-w-3xl mx-auto">
+            <div id="resume-content" className="bg-white rounded-xl shadow-lg p-6 sm:p-10 max-w-3xl mx-auto text-gray-900">
               {/* Header */}
               <div className="mb-6 pb-4 border-b-2 border-indigo-600">
                 <h1 className="text-3xl sm:text-4xl font-bold text-indigo-600 mb-2">{resumeData.name}</h1>
-                <div className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3">{resumeData.title}</div>
-                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                <div className="text-base sm:text-lg font-semibold text-gray-900 mb-3">{resumeData.title}</div>
+                <div className="text-xs sm:text-sm text-gray-600 space-y-1">
                   <div>{resumeData.location}{resumeData.timezone ? ` | ${resumeData.timezone}` : ''}</div>
                   <div>{isRTL ? 'شماره تماس' : 'Phone'}: {resumeData.phone}</div>
                   <div>{isRTL ? 'ایمیل' : 'Email'}: {resumeData.email}</div>
@@ -438,7 +490,7 @@ export function ResumePreviewModal({ isOpen, onClose, language }: ResumePreviewM
                 <h2 className="text-base sm:text-lg font-bold text-indigo-600 mb-2 pb-1 border-b border-indigo-600">
                   {isRTL ? 'خلاصه حرفه‌ای' : 'Summary'}
                 </h2>
-                <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
+                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-justify">
                   {resumeData.summary}
                 </p>
               </div>
@@ -451,11 +503,11 @@ export function ResumePreviewModal({ isOpen, onClose, language }: ResumePreviewM
                 <div className="space-y-4">
                   {resumeData.experience.map((exp, index) => (
                     <div key={index}>
-                      <div className="font-bold text-sm sm:text-base text-gray-900 dark:text-white">{exp.title}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      <div className="font-bold text-sm sm:text-base text-gray-900">{exp.title}</div>
+                      <div className="text-xs sm:text-sm text-gray-600 mb-2">
                         {exp.company ? `${exp.company} | ${exp.period}` : exp.period}
                       </div>
-                      <ul className={`text-xs sm:text-sm space-y-1 ${isRTL ? 'pr-5' : 'pl-5'} list-disc text-gray-700 dark:text-gray-300`}>
+                      <ul className={`text-xs sm:text-sm space-y-1 ${isRTL ? 'pr-5' : 'pl-5'} list-disc text-gray-700`}>
                         {exp.responsibilities.map((resp, idx) => (
                           <li key={idx} className="leading-relaxed">{resp}</li>
                         ))}
@@ -470,7 +522,7 @@ export function ResumePreviewModal({ isOpen, onClose, language }: ResumePreviewM
                 <h2 className="text-base sm:text-lg font-bold text-indigo-600 mb-2 pb-1 border-b border-indigo-600">
                   {isRTL ? 'فرایند و رویکرد طراحی' : 'Skills'}
                 </h2>
-                <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
+                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-justify">
                   {resumeData.skills}
                 </p>
               </div>
@@ -483,8 +535,8 @@ export function ResumePreviewModal({ isOpen, onClose, language }: ResumePreviewM
                 <div className="space-y-3">
                   {resumeData.education.map((edu, index) => (
                     <div key={index}>
-                      <div className="font-bold text-sm text-gray-900 dark:text-white">{edu.title}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                      <div className="font-bold text-sm text-gray-900">{edu.title}</div>
+                      <div className="text-xs sm:text-sm text-gray-600">
                         {edu.institution} ({edu.period})
                       </div>
                     </div>

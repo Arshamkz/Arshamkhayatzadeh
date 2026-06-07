@@ -9,7 +9,7 @@
     "greeting": "Hi, I'm",
     "name": "Arsham Khayatzadeh",
     "title": "Product Designer",
-    "subtitle": "Shipped redesigns that increased booking conversion by 20% and reduced support tickets by 41% for a 500K+ MAU platform. Specializing in conversion optimization, scalable design systems, and AI-augmented workflows.",
+    "subtitle": "Product Designer focused on creating user-centered solutions through research, data analysis, and systematic design thinking. Currently working on a 500K+ MAU booking platform.",
     "viewWork": "View Work",
     "downloadResume": "Download Resume",
     "resume": "Resume",
@@ -32,6 +32,7 @@
   },
   "about": {
     "title": "About Me",
+    "headline": "I turn research insights into measurable business outcomes through data-driven design and systematic optimization",
     "intro": "Product designer combining data analytics with AI-augmented workflows to drive measurable business impact",
     "description": "Currently at IranHotelOnline (Mashhad), I specialize in conversion optimization and scalable design systems. Early adopter of AI-assisted design tools—documented real-world constraints and best practices for production environments. My approach combines quantitative analysis with rapid prototyping to ship features that convert.",
     "currentRole": "Current Role",
@@ -41,7 +42,56 @@
     "focusAreasDesc": "Data-driven design, conversion optimization",
     "focusAreasDetail": "Research-based design solutions",
     "skills": "Skills & Expertise",
-    "toolsTitle": "Tools & Technologies"
+    "toolsTitle": "Tools & Technologies",
+    "impactTitle": "What I Focus On",
+    "journeyTitle": "My Journey",
+    "philosophyTitle": "Design Philosophy",
+    "skillsTitle": "Skills & Expertise",
+    "focus": {
+      "research": {
+        "title": "User Research",
+        "description": "Understanding user behavior through interviews, usability testing, and analytics to inform design decisions"
+      },
+      "systems": {
+        "title": "Design Systems",
+        "description": "Building scalable component libraries and design tokens for consistent user experiences"
+      },
+      "optimization": {
+        "title": "Continuous Improvement",
+        "description": "Iterating on designs based on user feedback, A/B tests, and data analysis"
+      }
+    },
+    "journey": {
+      "start": {
+        "role": "Product Design Intern",
+        "company": "IranHotelOnline",
+        "achievement": "Joined as an intern and quickly learned the booking platform's complex user flows and business requirements"
+      },
+      "growth": {
+        "role": "Junior Product Designer",
+        "company": "IranHotelOnline",
+        "achievement": "Led my first major redesign project and established an analytics-driven design process within the team"
+      },
+      "current": {
+        "role": "Product Designer",
+        "company": "IranHotelOnline",
+        "achievement": "Leading end-to-end feature development for a 500K+ MAU platform, collaborating with PM and engineering teams"
+      }
+    },
+    "principles": {
+      "dataFirst": {
+        "title": "Data-First Design",
+        "description": "Every design decision is validated with analytics, user research, and A/B testing to ensure measurable impact"
+      },
+      "userCentric": {
+        "title": "User-Centric Approach",
+        "description": "Deep understanding of user behavior and pain points drives solutions that balance business goals with user needs"
+      },
+      "iterative": {
+        "title": "Iterative Optimization",
+        "description": "Continuous improvement through rapid prototyping, testing, and iteration based on real user feedback and data"
+      }
+    }
   },
   "skills": {
     "figma": "Figma",
@@ -221,6 +271,26 @@
       "title": "Pages",
       "subtitle": "Complete Views",
       "description": "Full layouts combining all components into complete experiences"
+    }
+  },
+  "testimonials": {
+    "title": "What Colleagues Say",
+    "ali": {
+      "name": "Ali Aghasizadeh",
+      "role": "Senior Product Manager | Growth & Business Strategist",
+      "linkedin": "https://linkedin.com/in/arsham-khayatzadeh/details/recommendations/?detailScreenTabIndex=0&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BrPsn%2BzYrQM6ABwLBeJvwIA%3D%3D",
+      "quote1": "It's been inspiring to watch Arsham's growth since he first joined our team as an intern. In a short time, he has evolved into a highly capable and independent Product Designer who confidently leads features and projects from concept to delivery.",
+      "quote2": "What truly sets Arsham apart is his ability to combine creativity with measurable impact. His designs don't just make the product look and feel great — they directly contribute to achieving the defined KPIs for each feature. That rare balance between aesthetic excellence and business results is what makes his work stand out.",
+      "quote3": "Arsham has become an integral part of the product team, and his progress is a clear reflection of both his dedication and his strong sense of ownership."
+    },
+    "mahshid": {
+      "name": "Mahshid Golshani",
+      "role": "Product Owner",
+      "linkedin": "https://linkedin.com/in/arsham-khayatzadeh/details/recommendations/?detailScreenTabIndex=0&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BrPsn%2BzYrQM6ABwLBeJvwIA%3D%3D",
+      "quote1": "I had the opportunity to work with Arsham in a professional environment, and honestly, he is one of the most reliable Product Designers I've worked with.",
+      "quote2": "Arsham has a strong understanding of both user needs and business goals, and he translates them into clean, practical, and well-thought-out designs with great attention to detail.",
+      "quote3": "Beyond his technical skills, what truly stands out is his work ethic. He is hardworking, highly motivated, responsible, and genuinely kind and easy to work with. Collaborating with Arsham is always smooth. He listens carefully, receives feedback professionally, and is consistently focused on improving the final outcome.",
+      "quote4": "I'm confident that any team working with Arsham will benefit not only from the quality of his work, but also from the positive and human energy he brings to the team."
     }
   }
 }

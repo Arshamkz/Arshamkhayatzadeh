@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router';
-import { ArrowUpRight, Download, Mail, Award, Users, TrendingUp } from 'lucide-react';
+import { ArrowUpRight, Download, Mail } from 'lucide-react';
 import { projects } from '../data/projects';
 import { haptic } from '../utils/haptics';
 import { useTheme } from '../contexts/ThemeContext';
@@ -12,9 +12,11 @@ import { ContactMenu } from '../components/ContactMenu';
 import { ResumePreviewModal } from '../components/ResumePreviewModal';
 import { BackToTop } from '../components/BackToTop';
 import { LanguageToggle } from '../components/LanguageToggle';
+import { AboutSection } from '../components/AboutSection';
 import DotGrid from '../components/DotGrid';
 import { useState, useRef } from 'react';
-import profileImage from '@/imports/profile.jpg';
+import profileImageLight from '@/imports/ChatGPT_Image_Jun_5__2026__09_47_36_PM.png';
+import profileImageDark from '@/imports/profile.jpg';
 
 export function Home() {
   const navigate = useNavigate();
@@ -39,16 +41,6 @@ export function Home() {
     haptic('light');
     setTheme(actualTheme === 'dark' ? 'light' : 'dark');
   };
-
-  // Skills list with translation keys
-  const skills = [
-    'skills.figma',
-    'skills.userResearch',
-    'skills.analytics',
-    'skills.designSystems',
-    'skills.prototyping',
-    'skills.conversionOptimization'
-  ];
 
   return (
     <>
@@ -79,8 +71,24 @@ export function Home() {
           />
         </div> */}
 
-        {/* Theme Toggle */}
-        <div className="fixed top-6 right-6 z-50">
+        {/* Top Right Controls */}
+        <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
+          {/* LinkedIn Link */}
+          <motion.a
+            href="https://www.linkedin.com/in/arsham-khayatzadeh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-full bg-white/60 dark:bg-white/10 backdrop-blur-md border border-gray-200/50 dark:border-white/10 flex items-center justify-center hover:bg-white/80 dark:hover:bg-white/20 transition-all duration-200 shadow-lg shadow-black/5"
+            aria-label="LinkedIn Profile"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-5 h-5 text-[#0A66C2]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </motion.a>
+
+          {/* Theme Toggle */}
           <motion.button
             onClick={toggleTheme}
             className="w-10 h-10 rounded-full bg-white/60 dark:bg-white/10 backdrop-blur-md border border-gray-200/50 dark:border-white/10 flex items-center justify-center hover:bg-white/80 dark:hover:bg-white/20 transition-all duration-200 shadow-lg shadow-black/5 overflow-hidden relative"
@@ -129,16 +137,20 @@ export function Home() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
-                className="mb-8 flex justify-center"
+                className="mb-6 sm:mb-8 flex justify-center"
               >
                 <div className="relative group">
-                  {/* Glow effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full blur-xl opacity-30 group-hover:opacity-70 transition-all duration-500" />
+                  {/* Glow effect - reduce blur on mobile */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full blur-md sm:blur-xl opacity-30 group-hover:opacity-70 transition-all duration-500" />
 
                   {/* Image container with glassmorphism */}
-                  <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-white/60 dark:bg-white/10 backdrop-blur-md border-4 border-white/50 dark:border-white/20 shadow-2xl shadow-blue-500/20 group-hover:shadow-3xl group-hover:shadow-blue-500/40 transition-all duration-500">
-                    <img
-                      src={profileImage}
+                  <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-white/60 dark:bg-white/10 backdrop-blur-md border-4 border-white/50 dark:border-white/20 shadow-2xl shadow-blue-500/20 group-hover:shadow-3xl group-hover:shadow-blue-500/40 transition-all duration-500">
+                    <motion.img
+                      key={actualTheme}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      src={actualTheme === 'dark' ? profileImageDark : profileImageLight}
                       alt="Arsham Khayatzadeh - Product Designer"
                       className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                       loading="eager"
@@ -152,7 +164,7 @@ export function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4"
+                className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-3 sm:mb-4 leading-tight"
               >
                 <span className="text-gray-900 dark:text-white">Arsham</span>
                 <br />
@@ -186,7 +198,7 @@ export function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-wrap items-center justify-center gap-3"
+                className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full max-w-md sm:max-w-none"
               >
                 <button
                   ref={contactButtonRef}
@@ -194,23 +206,23 @@ export function Home() {
                     haptic('medium');
                     setContactMenuOpen(true);
                   }}
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95 flex items-center gap-2"
+                  className="flex-1 sm:flex-initial px-5 sm:px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
                 >
-                  <Mail className="w-4 h-4" />
-                  {t('hero.contact')}
+                  <Mail className="w-5 h-5" />
+                  <span>{t('hero.contact')}</span>
                 </button>
-                
+
                 <button
                   onClick={handleResumeDownload}
-                  className="px-6 py-3 bg-white/60 dark:bg-white/10 backdrop-blur-md border border-gray-200/50 dark:border-white/10 text-gray-900 dark:text-white rounded-full font-medium hover:bg-white/80 dark:hover:bg-white/20 transition-all duration-200 shadow-lg shadow-black/5 hover:scale-105 active:scale-95 flex items-center gap-2"
+                  className="flex-1 sm:flex-initial px-5 sm:px-6 py-3 bg-white/60 dark:bg-white/10 backdrop-blur-md border border-gray-200/50 dark:border-white/10 text-gray-900 dark:text-white rounded-full font-medium hover:bg-white/80 dark:hover:bg-white/20 transition-all duration-200 shadow-lg shadow-black/5 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
                 >
-                  <Download className="w-4 h-4" />
-                  {t('hero.resume')}
+                  <Download className="w-5 h-5" />
+                  <span>{t('hero.resume')}</span>
                 </button>
               </motion.div>
 
               {/* Stats Card */}
-              
+
             </div>
           </section>
 
@@ -248,11 +260,11 @@ export function Home() {
               </div>
 
               {/* Projects Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                 {projects.map((project, index) => {
                   const projectData = getProjectData(project.id);
                   if (!projectData) return null;
-                  
+
                   return (
                     <motion.div
                       key={project.id}
@@ -263,11 +275,11 @@ export function Home() {
                       onClick={() => handleViewCaseStudy(project.id)}
                       className="group cursor-pointer"
                     >
-                      <div className="relative h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-gray-200/50 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/10 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
-                        
+                      <div className="relative h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-gray-200/50 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/10 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-blue-500/10 active:scale-[0.98] sm:hover:-translate-y-2">
+
                         {/* Featured Badge */}
                         {project.featured && (
-                          <div className="absolute -top-3 -right-3 z-10">
+                          <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 z-10">
                             <div className="relative">
                               <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full blur-md opacity-60 animate-pulse" />
                               <div className="relative bg-gradient-to-r from-amber-400 to-orange-500 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg font-bold text-[10px] sm:text-xs tracking-wide flex items-center gap-0.5 sm:gap-1">
@@ -280,12 +292,12 @@ export function Home() {
                             </div>
                           </div>
                         )}
-                        
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                           {projectData.title}
                         </h3>
-                        
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 line-clamp-2">
+
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 line-clamp-2">
                           {projectData.shortDesc}
                         </p>
 
@@ -294,7 +306,7 @@ export function Home() {
                           <ArrowUpRight className="w-4 h-4" />
                         </div>
 
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/0 to-indigo-500/0 group-hover:from-blue-500/5 group-hover:to-indigo-500/5 transition-all duration-300 pointer-events-none" />
+                        <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-500/0 to-indigo-500/0 group-hover:from-blue-500/5 group-hover:to-indigo-500/5 transition-all duration-300 pointer-events-none" />
                       </div>
                     </motion.div>
                   );
@@ -304,65 +316,7 @@ export function Home() {
           </section>
 
           {/* About Section */}
-          <section className="py-20 px-6 md:px-12">
-            <div className="max-w-4xl mx-auto">
-              
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className="bg-white/60 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-200/50 dark:border-white/10 shadow-xl shadow-black/5"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-                  {t('about.title')}
-                </h2>
-                
-                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-center max-w-2xl mx-auto">
-                  {t('about.description')}
-                </p>
-
-                {/* Skills */}
-                <div className="flex flex-wrap justify-center gap-2 mb-8">
-                  {skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-4 py-2 bg-white/40 dark:bg-white/5 backdrop-blur-sm rounded-full text-sm text-gray-700 dark:text-gray-300 font-medium border border-gray-200/50 dark:border-white/10"
-                    >
-                      {t(skill)}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Experience Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-white/40 dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-white/10">
-                    <h3 className="font-bold text-gray-900 dark:text-white mb-2">
-                      {t('about.currentRole')}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {t('about.currentRoleTitle')}
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                      {t('about.currentRoleDesc')}
-                    </p>
-                  </div>
-
-                  <div className="bg-white/40 dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-white/10">
-                    <h3 className="font-bold text-gray-900 dark:text-white mb-2">
-                      {t('about.focusAreas')}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {t('about.focusAreasDesc')}
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                      {t('about.focusAreasDetail')}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </section>
+          <AboutSection />
 
           {/* Footer */}
           <footer className="py-12 px-6 md:px-12 text-center">
