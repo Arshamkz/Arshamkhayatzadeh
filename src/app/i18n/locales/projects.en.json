@@ -228,65 +228,60 @@
       "Hoteliers want customizable dashboards—one size doesn't fit all for different property types"
     ]
   },
-  "iranhotel-plp": {
-    "title": "Redesigning Hotel Booking Experience",
-    "shortDesc": "Redesigning the hotel listing page to shift users from browsing to deciding",
-    "description": "A 2-month redesign of the hotel listing page for IranHotel, focused on reducing cognitive load and improving conversion.",
-    "tags": ["Product Design", "UX Research", "Conversion Optimization", "Information Architecture"],
-    "role": "Sole Product Designer",
+  "plp-redesign": {
+    "title": "PLP Redesign",
+    "shortDesc": "Designing a faster, more confident mobile PLP — shifting users from browsing to deciding",
+    "description": "A mobile-first redesign of the hotel listing page (PLP) at IranHotel — reframing the page as a decision environment rather than a browse gallery.",
+    "tags": ["Product Design", "UX Research", "Mobile-first"],
+    "role": "Product Designer",
     "collaboration": "PM, PO, 2 Developers, QA",
     "timeline": "2 months",
     "company": "IranHotel",
-    "context": "IranHotel is a nationwide hotel booking platform offering reservation services for both B2C and B2B users. I worked as the sole Product Designer alongside a PM, PO, two developers, and QA over a 2-month redesign of the hotel listing page (PLP). The primary business objective was simple but critical: improve conversion and reduce drop-off at the most decisive stage of the booking funnel.",
+    "context": "The property listing page (PLP) is the most critical funnel step at IranHotel — the page where users decide which hotel to click into. Despite strong traffic, a significant portion of users were abandoning the funnel here. This 2-month project set out to understand why and redesign the PLP to actively move users from browsing to deciding.",
     "problem": {
-      "description": "The existing PLP was not failing because users couldn't find hotels. It was failing because users couldn't decide efficiently.",
+      "description": "The existing PLP optimized for showcasing individual hotels rather than helping users compare multiple alternatives. As a result, users needed more scrolling, more memory, and more effort before making a decision.",
       "issues": [
-        "High cognitive load during hotel comparison",
-        "Interaction ambiguity between images, cards, and actions",
-        "Inefficient information density leading to excessive scrolling"
+        "Low information density — only one hotel visible per viewport",
+        "Oversized visual focus — large images reduced comparison efficiency",
+        "Action ambiguity — multiple competing actions increased hesitation",
+        "Navigation distraction — footer navigation pulled users away from the booking flow"
       ],
       "goals": [
-        "Reduce drop-off rate",
-        "Improve card CTR",
-        "Increase conversion rate",
-        "Improve information clarity",
-        "Reduce confusion",
-        "Improve engagement"
+        "Improve comparison efficiency across multiple hotels",
+        "Reduce mid-funnel abandonment on the listing page",
+        "Surface decision-critical information without extra taps"
       ]
     },
     "research": {
-      "description": "User behavior analysis revealed a fundamental shift in understanding—from navigation to decision-making.",
+      "description": "Research combined behavioral analytics with moderated usability tests to separate perception from actual behavior.",
       "methods": [
-        "Users scan before deciding—content hierarchy matters more than navigation",
-        "Comparison drives decisions—users need efficient side-by-side evaluation",
-        "Ambiguity reduces confidence—unclear interactions erode trust",
-        "Navigation can create funnel leakage—excess paths pull users away from booking",
-        "Higher density improves comparison when hierarchy is clear"
+        "Session recordings and heatmaps via Microsoft Clarity",
+        "Moderated usability testing with 5 participants",
+        "Google Analytics funnel analysis",
+        "Card sort to surface user mental models for hotel information priority"
       ],
       "insights": [
-        "Initially, we believed the primary issue was related to interface organization and navigation usability",
-        "After reviewing user behavior, we discovered that navigation was not helping users complete their booking journey—it was pulling them away from decision-making",
-        "This shifted our focus from navigation optimization to decision optimization"
+        "Users compare hotels rather than evaluate them individually",
+        "Only one hotel was visible per viewport",
+        "Refinement actions were separated from exploration",
+        "Visual emphasis did not match decision priorities"
       ]
     },
     "solution": {
-      "description": "The final solution transformed the PLP from a browsing interface into a decision-making environment.",
+      "description": "Four design decisions. One unified goal: faster comparison. Each decision maps directly to a specific failure mode in the original experience.",
       "features": [
-        "Hotel card redesign — denser, more scannable layout",
-        "Quick Filters — faster comparison without full-page reload",
-        "Unified interaction model — consistent tap/click behavior across all cards",
-        "Footer navigation removed — eliminated funnel leakage path",
-        "Sticky filter behavior — filters always accessible without scrolling back",
-        "Desktop grid/list view toggle — user-controlled density preference"
+        "Increasing comparison efficiency — denser hotel cards",
+        "A persistent refinement layer for filters and sort",
+        "Decision-critical signals prioritized in the card hierarchy",
+        "Navigation distractions removed from the PLP view"
       ],
-      "implementation": "The redesign was driven by one core insight: a hotel listing page is not a collection of options—it is a decision-making environment. Every element was evaluated through the lens of: does this help users decide faster?"
+      "implementation": "Worked closely with 2 front-end developers through a 3-week implementation sprint. Two rounds of design QA — one on staging, one post-launch. Monitored via Clarity for 2 weeks post-launch to catch regressions."
     },
     "learnings": [
-      "The problem was not visual. It was behavioral. Users did not need more options—they needed a better environment for making decisions.",
-      "Navigation can be a silent conversion killer—removing footer nav improved funnel focus more than any visual change.",
-      "Increasing information density can improve comparison efficiency when hierarchy is clear—this challenged our assumption that 'less is more.'",
-      "A hotel listing page is not a collection of options. It is a decision-making environment.",
-      "Hiding filters freed screen space but reduced discoverability—trade-offs must be validated, not assumed."
+      "The PLP was not failing at Discovery — it was failing at Decision Making. Reframing the challenge unlocked the right solutions.",
+      "Each design decision must be traceable to a specific failure mode — cosmetic changes don't earn their place in a redesign.",
+      "Persistent refinement controls change the user's mental model from 'search → results' to 'search → refine → results'.",
+      "Two-stage QA (staging + post-launch) is worth the time — it catches regressions analytics can't."
     ]
   }
 }

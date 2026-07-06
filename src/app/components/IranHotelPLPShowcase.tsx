@@ -1,349 +1,312 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import {
-  ChevronDown, ChevronUp, X, ZoomIn, Eye,
-  Layers, Filter, Grid, List, MousePointer, TrendingUp, TrendingDown,
-  Lightbulb, Target, AlertTriangle, CheckCircle2
-} from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { Check } from 'lucide-react';
 
-interface SectionCardProps {
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-  accentColor: string;
-  defaultOpen?: boolean;
-}
+// Import PNG images from Figma export - PlpRedesignCaseStudy-2
+import imgBefore from '../../imports/PlpRedesignCaseStudy-2/2052927d41f827f905c138fca855f422f6ed0951.png';
+import imgAfter from '../../imports/PlpRedesignCaseStudy-2/00a7a9a331e489f5fd5a1e312f2b45cc4db9a6c9.png';
+import imgAnnotated from '../../imports/PlpRedesignCaseStudy-2/92a6359cf2161151b019fa58df2fb6ec0f8a9a4d.png';
+import imgInsight from '../../imports/PlpRedesignCaseStudy-2/bfaacd8374e4fdead9f0242e54311598d356ae2a.png';
+import imgSolutionBefore from '../../imports/PlpRedesignCaseStudy-2/a4c7c0692c625f8012ed18034d08c43ff0c7b0dc.png';
+import imgSolutionAfter from '../../imports/PlpRedesignCaseStudy-2/fcd7192ea6c47f285c0c03f9ea3b09cbbcbf8ef2.png';
+import imgOutcome from '../../imports/PlpRedesignCaseStudy-2/b6859f210e4afa065a1916e13502bd16a8ce44be.png';
 
-function SectionCard({ icon, title, children, accentColor, defaultOpen = false }: SectionCardProps) {
-  const [open, setOpen] = useState(defaultOpen);
+// Phone mockup container component
+function PhoneMockup({ src, alt, width = '100%' }: { src: string; alt: string; width?: string }) {
   return (
-    <motion.div
-      layout
-      className="bg-white/30 dark:bg-white/5 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/10 overflow-hidden"
+    <div
+      className="bg-white dark:bg-white/95 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] p-2 overflow-hidden"
+      style={{ width }}
     >
-      <button
-        onClick={() => setOpen(v => !v)}
-        className={`w-full flex items-center justify-between p-5 text-left transition-all duration-200 hover:bg-white/20 dark:hover:bg-white/5 group`}
-      >
-        <div className="flex items-center gap-3">
-          <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${accentColor} flex-shrink-0`}>
-            {icon}
-          </div>
-          <span className="font-bold text-gray-900 dark:text-white text-base">{title}</span>
-        </div>
-        <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
-          <ChevronDown className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-        </motion.div>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <div className="px-5 pb-5 pt-1">{children}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
-
-interface ZoomableImageProps {
-  src: string;
-  alt: string;
-  caption?: string;
-}
-
-function ZoomableImage({ src, alt, caption }: ZoomableImageProps) {
-  const [zoomed, setZoomed] = useState(false);
-  return (
-    <>
-      <div
-        className="relative group cursor-zoom-in rounded-xl overflow-hidden border border-white/30 dark:border-white/10"
-        onClick={() => setZoomed(true)}
-      >
-        <img src={src} alt={alt} className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-          <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
-        </div>
-      </div>
-      {caption && <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">{caption}</p>}
-
-      <AnimatePresence>
-        {zoomed && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
-            onClick={() => setZoomed(false)}
-          >
-            <motion.img
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              src={src}
-              alt={alt}
-              className="max-w-full max-h-full object-contain rounded-xl shadow-2xl cursor-zoom-out"
-              onClick={e => e.stopPropagation()}
-            />
-            <button
-              onClick={() => setZoomed(false)}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-}
-
-
-// Visual diagram component showing the design shift
-function DesignShiftDiagram() {
-  const { language } = useLanguage();
-  const isRTL = language === 'fa';
-
-  const before = isRTL
-    ? ['ناوبری پیچیده', 'کارت‌های بزرگ', 'اسکرول زیاد', 'سردرگمی تعامل']
-    : ['Complex navigation', 'Large cards', 'Excessive scrolling', 'Interaction confusion'];
-
-  const after = isRTL
-    ? ['فیلترهای سریع', 'کارت‌های فشرده', 'Sticky filters', 'مدل یکپارچه']
-    : ['Quick filters', 'Dense cards', 'Sticky filters', 'Unified interactions'];
-
-  return (
-    <div className="grid grid-cols-2 gap-4 mt-4">
-      <div className="bg-red-500/10 dark:bg-red-500/20 rounded-xl p-4 border border-red-300/30 dark:border-red-500/30">
-        <div className="flex items-center gap-2 mb-3">
-          <TrendingDown className="w-4 h-4 text-red-500" />
-          <span className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">
-            {isRTL ? 'قبل' : 'Before'}
-          </span>
-        </div>
-        <ul className="space-y-2">
-          {before.map((item, i) => (
-            <li key={i} className={`flex items-center gap-2 text-xs text-gray-700 dark:text-gray-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <div className="w-1.5 h-1.5 rounded-full bg-red-400 flex-shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="bg-green-500/10 dark:bg-green-500/20 rounded-xl p-4 border border-green-300/30 dark:border-green-500/30">
-        <div className="flex items-center gap-2 mb-3">
-          <TrendingUp className="w-4 h-4 text-green-500" />
-          <span className="text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">
-            {isRTL ? 'بعد' : 'After'}
-          </span>
-        </div>
-        <ul className="space-y-2">
-          {after.map((item, i) => (
-            <li key={i} className={`flex items-center gap-2 text-xs text-gray-700 dark:text-gray-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <div className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-// Trade-off cards
-function TradeoffCard({ label, pro, con, isRTL }: { label: string; pro: string; con: string; isRTL: boolean }) {
-  return (
-    <div className="bg-white/20 dark:bg-white/5 rounded-xl p-4 border border-white/30 dark:border-white/10">
-      <p className={`font-bold text-gray-900 dark:text-white text-sm mb-3 ${isRTL ? 'text-right' : 'text-left'}`}>{label}</p>
-      <div className="space-y-2">
-        <div className={`flex items-start gap-2 text-xs text-green-700 dark:text-green-400 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-          <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-          <span>{pro}</span>
-        </div>
-        <div className={`flex items-start gap-2 text-xs text-red-700 dark:text-red-400 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-          <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-          <span>{con}</span>
-        </div>
-      </div>
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-auto object-contain"
+        loading="lazy"
+      />
     </div>
   );
 }
 
 export function IranHotelPLPShowcase() {
-  const { language } = useLanguage();
-  const isRTL = language === 'fa';
-  const dir = isRTL ? 'rtl' : 'ltr';
-
-  const content = {
-    en: {
-      pdfTitle1: 'Redesigning Hotel PLP',
-      pdfDesc1: 'Full case study — tap to preview',
-      pdfTitle2: 'How We Redesigned PLP',
-      pdfDesc2: 'Process deep-dive — tap to preview',
-      principles: {
-        title: 'Design Principles',
-        items: [
-          { icon: <Eye className="w-4 h-4 text-white" />, label: 'Optimize for scanning, not browsing', bg: 'bg-blue-500' },
-          { icon: <Layers className="w-4 h-4 text-white" />, label: 'Reduce cognitive load', bg: 'bg-indigo-500' },
-          { icon: <Grid className="w-4 h-4 text-white" />, label: 'Increase effective information density', bg: 'bg-purple-500' },
-          { icon: <MousePointer className="w-4 h-4 text-white" />, label: 'Keep users focused on booking', bg: 'bg-pink-500' },
-        ]
-      },
-      solutions: {
-        title: 'Solutions',
-        items: [
-          { icon: <Grid className="w-4 h-4 text-white" />, label: 'Hotel card redesign', bg: 'bg-blue-500' },
-          { icon: <Filter className="w-4 h-4 text-white" />, label: 'Quick filters added', bg: 'bg-indigo-500' },
-          { icon: <MousePointer className="w-4 h-4 text-white" />, label: 'Unified interaction model', bg: 'bg-purple-500' },
-          { icon: <X className="w-4 h-4 text-white" />, label: 'Footer navigation removed', bg: 'bg-red-500' },
-          { icon: <Target className="w-4 h-4 text-white" />, label: 'Sticky filter behavior', bg: 'bg-orange-500' },
-          { icon: <List className="w-4 h-4 text-white" />, label: 'Grid/list view on desktop', bg: 'bg-teal-500' },
-        ]
-      },
-      tradeoffs: {
-        title: 'Trade-offs',
-        items: [
-          { label: 'Information Density', pro: 'Improved comparison efficiency', con: 'Reduced visual focus per item' },
-          { label: 'Navigation Removal', pro: 'Better booking funnel focus', con: 'Less opportunity for exploration' },
-          { label: 'Hidden Filters', pro: 'More content visible above fold', con: 'Reduced filter discoverability' },
-        ]
-      },
-      reflection: {
-        title: 'Key Reflection',
-        text: 'The problem was not visual. It was behavioral. Users did not need more options. They needed a better environment for making decisions. A hotel listing page is not a collection of options — it is a decision-making environment.',
-      }
-    },
-    fa: {
-      pdfTitle1: 'بازطراحی هتل PLP',
-      pdfDesc1: 'کیس استادی کامل — برای پیش‌نمایش ضربه بزنید',
-      pdfTitle2: 'چطور PLP رو بازطراحی کردیم',
-      pdfDesc2: 'بررسی عمیق فرآیند — برای پیش‌نمایش ضربه بزنید',
-      principles: {
-        title: 'اصول طراحی',
-        items: [
-          { icon: <Eye className="w-4 h-4 text-white" />, label: 'طراحی برای اسکن، نه مرور', bg: 'bg-blue-500' },
-          { icon: <Layers className="w-4 h-4 text-white" />, label: 'کاهش بار شناختی کاربران', bg: 'bg-indigo-500' },
-          { icon: <Grid className="w-4 h-4 text-white" />, label: 'افزایش چگالی مؤثر اطلاعات', bg: 'bg-purple-500' },
-          { icon: <MousePointer className="w-4 h-4 text-white" />, label: 'حفظ تمرکز کاربران بر رزرو', bg: 'bg-pink-500' },
-        ]
-      },
-      solutions: {
-        title: 'راهکارها',
-        items: [
-          { icon: <Grid className="w-4 h-4 text-white" />, label: 'بازطراحی کارت‌های هتل', bg: 'bg-blue-500' },
-          { icon: <Filter className="w-4 h-4 text-white" />, label: 'افزودن فیلترهای سریع', bg: 'bg-indigo-500' },
-          { icon: <MousePointer className="w-4 h-4 text-white" />, label: 'یکپارچه‌سازی مدل تعاملات', bg: 'bg-purple-500' },
-          { icon: <X className="w-4 h-4 text-white" />, label: 'حذف ناوبری پایین صفحه', bg: 'bg-red-500' },
-          { icon: <Target className="w-4 h-4 text-white" />, label: 'رفتار Sticky برای فیلترها', bg: 'bg-orange-500' },
-          { icon: <List className="w-4 h-4 text-white" />, label: 'نمای شبکه‌ای/لیستی دسکتاپ', bg: 'bg-teal-500' },
-        ]
-      },
-      tradeoffs: {
-        title: 'Trade-off ها',
-        items: [
-          { label: 'چگالی اطلاعات', pro: 'بهبود کارآیی مقایسه', con: 'کاهش تمرکز بصری روی هر آیتم' },
-          { label: 'حذف ناوبری', pro: 'تمرکز بهتر روی قیف رزرو', con: 'کاهش فرصت اکتشاف' },
-          { label: 'پنهان‌سازی فیلترها', pro: 'محتوای بیشتر روی صفحه', con: 'کاهش قابلیت کشف فیلترها' },
-        ]
-      },
-      reflection: {
-        title: 'جمع‌بندی کلیدی',
-        text: 'مسئله اصلی یک مشکل بصری نبود؛ یک مسئله رفتاری بود. کاربران به گزینه‌های بیشتر نیاز نداشتند. آن‌ها به محیطی بهتر برای تصمیم‌گیری نیاز داشتند. یک صفحه لیست هتل صرفاً مجموعه‌ای از گزینه‌ها نیست — بلکه محیطی برای تصمیم‌گیری است.',
-      }
-    }
-  };
-
-  const c = isRTL ? content.fa : content.en;
-
   return (
-    <div className="space-y-4" dir={dir}>
+    <div className="w-full max-w-[390px] mx-auto px-5 font-['Inter',sans-serif] text-gray-900 dark:text-white">
 
-      {/* Before/After Visual Shift */}
-      <SectionCard
-        icon={<TrendingUp className="w-4 h-4 text-white" />}
-        title={isRTL ? 'تغییر دیدگاه — از ناوبری به تصمیم‌گیری' : 'The Shift — Navigation → Decision Making'}
-        accentColor="bg-gradient-to-br from-blue-500 to-indigo-600"
-        defaultOpen={true}
-      >
-        <DesignShiftDiagram />
-      </SectionCard>
-
-      {/* Design Principles */}
-      <SectionCard
-        icon={<Target className="w-4 h-4 text-white" />}
-        title={c.principles.title}
-        accentColor="bg-gradient-to-br from-purple-500 to-pink-600"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-          {c.principles.items.map((item, i) => (
-            <div key={i} className={`flex items-center gap-3 bg-white/20 dark:bg-white/5 rounded-xl p-3 border border-white/20 dark:border-white/10 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <div className={`w-8 h-8 rounded-lg ${item.bg} flex items-center justify-center flex-shrink-0`}>
-                {item.icon}
-              </div>
-              <span className={`text-xs font-medium text-gray-800 dark:text-gray-200 ${isRTL ? 'text-right' : 'text-left'}`}>{item.label}</span>
-            </div>
-          ))}
-        </div>
-      </SectionCard>
-
-      {/* Solutions */}
-      <SectionCard
-        icon={<CheckCircle2 className="w-4 h-4 text-white" />}
-        title={c.solutions.title}
-        accentColor="bg-gradient-to-br from-green-500 to-teal-600"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-          {c.solutions.items.map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.02 }}
-              className={`flex items-center gap-3 bg-white/20 dark:bg-white/5 rounded-xl p-3 border border-white/20 dark:border-white/10 cursor-default ${isRTL ? 'flex-row-reverse' : ''}`}
-            >
-              <div className={`w-8 h-8 rounded-lg ${item.bg} flex items-center justify-center flex-shrink-0 shadow`}>
-                {item.icon}
-              </div>
-              <span className={`text-xs font-medium text-gray-800 dark:text-gray-200 ${isRTL ? 'text-right' : 'text-left'}`}>{item.label}</span>
-            </motion.div>
-          ))}
-        </div>
-      </SectionCard>
-
-      {/* Trade-offs */}
-      <SectionCard
-        icon={<AlertTriangle className="w-4 h-4 text-white" />}
-        title={c.tradeoffs.title}
-        accentColor="bg-gradient-to-br from-orange-500 to-red-600"
-      >
-        <div className="space-y-3 mt-2">
-          {c.tradeoffs.items.map((item, i) => (
-            <TradeoffCard key={i} label={item.label} pro={item.pro} con={item.con} isRTL={isRTL} />
-          ))}
-        </div>
-      </SectionCard>
-
-      {/* Key Reflection */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="bg-gradient-to-br from-blue-600/20 to-indigo-600/20 dark:from-blue-500/30 dark:to-indigo-500/30 rounded-2xl p-5 border border-blue-300/40 dark:border-blue-500/40"
-      >
-        <div className={`flex items-center gap-2 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Lightbulb className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-          <span className="font-bold text-blue-800 dark:text-blue-200 text-sm">{c.reflection.title}</span>
-        </div>
-        <p className={`text-sm text-blue-900 dark:text-blue-100 leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
-          {c.reflection.text}
+      {/* SECTION 1 - HERO */}
+      <section className="mb-14">
+        <h1 className="text-[26px] font-bold leading-tight mb-3">
+          Hotel Booking Experience Redesign
+        </h1>
+        <p className="text-[14px] text-[#6B7280] dark:text-gray-400 mb-6 leading-relaxed">
+          Redesigning the hotel listing page to shift users from browsing to deciding
         </p>
-      </motion.div>
+
+        {/* Meta row */}
+        <div className="text-[11px] text-[#6B7280] dark:text-gray-400 mb-8 space-y-1.5">
+          <div>
+            <span className="font-medium text-gray-700 dark:text-gray-300">Role:</span> Product Designer
+          </div>
+          <div>
+            <span className="font-medium text-gray-700 dark:text-gray-300">Timeline:</span> 3 months
+          </div>
+          <div>
+            <span className="font-medium text-gray-700 dark:text-gray-300">Company:</span> IranHotel
+          </div>
+          <div>
+            <span className="font-medium text-gray-700 dark:text-gray-300">Team:</span> PM, 2 Developers, QA
+          </div>
+        </div>
+
+        {/* Before/After comparison */}
+        <div className="flex gap-3 items-start">
+          <div className="flex-1">
+            <p className="text-[10px] font-medium text-[#6B7280] dark:text-gray-400 uppercase tracking-[0.08em] mb-2">
+              BEFORE
+            </p>
+            <PhoneMockup src={imgBefore} alt="Before redesign" width="100%" />
+          </div>
+          <div className="flex-1">
+            <p className="text-[10px] font-medium text-[#6B7280] dark:text-gray-400 uppercase tracking-[0.08em] mb-2">
+              AFTER
+            </p>
+            <PhoneMockup src={imgAfter} alt="After redesign" width="100%" />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2 - PROJECT OVERVIEW */}
+      <section className="mb-14">
+        <h2 className="text-[18px] font-semibold mb-4">Project Overview</h2>
+        <p className="text-[15px] leading-[1.7] text-gray-700 dark:text-gray-300">
+          IranHotelOnline's product listing page (PLP) showed hotels in a familiar card layout — large images, basic info, and a "See Details" button. Users could browse, but they couldn't efficiently compare. Session recordings revealed repetitive behavior: open hotel → check price → go back → open another → check price → go back. The page was designed for exploration, but users needed a decision-making tool.
+        </p>
+      </section>
+
+      {/* SECTION 3 - OVERVIEW AND PROBLEM */}
+      <section className="mb-14">
+        <h2 className="text-[18px] font-semibold mb-4">The Problem</h2>
+        <p className="text-[15px] leading-[1.7] text-gray-700 dark:text-gray-300 mb-6">
+          Users were stuck in a browse-compare-return loop. Critical comparison data — price, rating, amenities — was either hidden in detail pages or buried at the bottom of cards. The page prioritized visual appeal over decision efficiency, creating friction exactly where users needed speed.
+        </p>
+
+        {/* Annotated problem screen */}
+        <div className="flex justify-center">
+          <PhoneMockup src={imgAnnotated} alt="Annotated problem screen showing LOW INFORMATION DENSITY, OVERSIZED VISUAL FOCUS, ACTION AMBIGUITY, NAVIGATION DISTRACTION" width="320px" />
+        </div>
+      </section>
+
+      {/* SECTION 4 - RESEARCH AND DISCOVERY */}
+      <section className="mb-14">
+        <h2 className="text-[18px] font-semibold mb-4">Research & Discovery</h2>
+
+        <div className="mb-6">
+          <p className="text-[11px] font-medium text-gray-700 dark:text-gray-300 uppercase tracking-[0.08em] mb-3">
+            RESEARCH METHODS
+          </p>
+          <ul className="space-y-2.5 text-[15px] leading-[1.7] text-gray-700 dark:text-gray-300">
+            <li className="flex gap-2">
+              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span>5 moderated usability sessions (task: compare 3 hotels and book one)</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span>Hotjar session recordings (50+ sessions analyzed)</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span>Heatmap analysis of click patterns and scroll depth</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span>Exit intent surveys on PLP abandonment</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-[11px] font-medium text-gray-700 dark:text-gray-300 uppercase tracking-[0.08em] mb-3">
+            KEY INSIGHTS
+          </p>
+          <div className="space-y-3">
+            <div className="border-l-4 border-blue-500 bg-blue-50/50 dark:bg-blue-950/20 pl-4 py-3 rounded-r">
+              <p className="text-[15px] leading-[1.7] text-gray-800 dark:text-gray-200">
+                4 out of 5 users opened detail pages solely to check price, then immediately returned to listing
+              </p>
+            </div>
+            <div className="border-l-4 border-purple-500 bg-purple-50/50 dark:bg-purple-950/20 pl-4 py-3 rounded-r">
+              <p className="text-[15px] leading-[1.7] text-gray-800 dark:text-gray-200">
+                Filter usage was 22% lower than industry average — filters were hidden in a modal requiring 5 taps to apply
+              </p>
+            </div>
+            <div className="border-l-4 border-orange-500 bg-orange-50/50 dark:bg-orange-950/20 pl-4 py-3 rounded-r">
+              <p className="text-[15px] leading-[1.7] text-gray-800 dark:text-gray-200">
+                Footer navigation caused 18% of mid-funnel exits — users clicked "Explore Destinations" and rarely returned to booking flow
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5 - INSIGHT */}
+      <section className="mb-14">
+        <div className="flex gap-4 items-center">
+          <div className="flex-shrink-0">
+            <PhoneMockup src={imgInsight} alt="Key insight visualization" width="140px" />
+          </div>
+          <div className="flex-1">
+            <p className="text-[22px] font-bold leading-tight mb-2">
+              Users were not struggling to find hotels.
+            </p>
+            <p className="text-[22px] font-bold leading-tight text-blue-600 dark:text-blue-400">
+              They were struggling to compare them efficiently.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6 - SOLUTION */}
+      <section className="mb-14">
+        <h2 className="text-[18px] font-semibold mb-4">Solution</h2>
+        <p className="text-[15px] leading-[1.7] text-gray-700 dark:text-gray-300 mb-6">
+          The redesign shifted the listing page from a browsing interface to a comparison tool. Every decision was validated against one question: does this help users make faster, more confident booking decisions?
+        </p>
+
+        {/* 4 Decision Cards */}
+        <div className="space-y-4 mb-8">
+          {/* Card 1 */}
+          <div className="bg-white dark:bg-gray-800/50 border border-[#E5E7EB] dark:border-gray-700 rounded-xl p-4">
+            <h3 className="text-[16px] font-semibold mb-2">Persistent Smart Filters</h3>
+            <p className="text-[13px] leading-[1.7] text-gray-700 dark:text-gray-300 mb-2">
+              Filters moved from hidden modal to fixed top bar
+            </p>
+            <p className="text-[13px] leading-[1.7] text-[#6B7280] dark:text-gray-400">
+              Reduces taps to refine results from 5 to 2
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="bg-white dark:bg-gray-800/50 border border-[#E5E7EB] dark:border-gray-700 rounded-xl p-4">
+            <h3 className="text-[16px] font-semibold mb-2">Increased Information Density</h3>
+            <p className="text-[13px] leading-[1.7] text-gray-700 dark:text-gray-300 mb-2">
+              Price, rating, amenity visible per card without tapping
+            </p>
+            <p className="text-[13px] leading-[1.7] text-[#6B7280] dark:text-gray-400">
+              Eliminates unnecessary page loads for critical decision data
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-white dark:bg-gray-800/50 border border-[#E5E7EB] dark:border-gray-700 rounded-xl p-4">
+            <h3 className="text-[16px] font-semibold mb-2">Decision-Optimized Card Hierarchy</h3>
+            <p className="text-[13px] leading-[1.7] text-gray-700 dark:text-gray-300 mb-2">
+              Visual weight follows: image → price → rating → amenity
+            </p>
+            <p className="text-[13px] leading-[1.7] text-[#6B7280] dark:text-gray-400">
+              Matches user mental model revealed in research, reducing scan time
+            </p>
+          </div>
+
+          {/* Card 4 */}
+          <div className="bg-white dark:bg-gray-800/50 border border-[#E5E7EB] dark:border-gray-700 rounded-xl p-4">
+            <h3 className="text-[16px] font-semibold mb-2">Funnel-Focused Navigation</h3>
+            <p className="text-[13px] leading-[1.7] text-gray-700 dark:text-gray-300 mb-2">
+              Non-booking links removed from listing page
+            </p>
+            <p className="text-[13px] leading-[1.7] text-[#6B7280] dark:text-gray-400">
+              Eliminates primary source of mid-funnel drop-off from heatmap data
+            </p>
+          </div>
+        </div>
+
+        {/* Before/After comparison for solution */}
+        <div className="flex gap-3 items-start">
+          <div className="flex-1">
+            <p className="text-[10px] font-medium text-[#6B7280] dark:text-gray-400 uppercase tracking-[0.08em] mb-2">
+              BEFORE
+            </p>
+            <PhoneMockup src={imgSolutionBefore} alt="Solution before" width="100%" />
+          </div>
+          <div className="flex-1">
+            <p className="text-[10px] font-medium text-[#6B7280] dark:text-gray-400 uppercase tracking-[0.08em] mb-2">
+              AFTER
+            </p>
+            <PhoneMockup src={imgSolutionAfter} alt="Solution after" width="100%" />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7 - TRADE-OFFS */}
+      <section className="mb-14">
+        <h2 className="text-[18px] font-semibold mb-4">Trade-offs</h2>
+
+        <div className="space-y-3">
+          <div className="bg-orange-50/50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-xl p-4">
+            <p className="text-[15px] leading-[1.7] text-gray-800 dark:text-gray-200">
+              Information density vs. visual clarity — More details per card speeds comparison but risks overwhelming users. We prioritized scannable hierarchy to balance both.
+            </p>
+          </div>
+
+          <div className="bg-orange-50/50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-xl p-4">
+            <p className="text-[15px] leading-[1.7] text-gray-800 dark:text-gray-200">
+              Persistent filters vs. screen real estate — Fixed filter bar improves access but reduces visible listings by ~12%. Users preferred faster filter access over one extra card per scroll.
+            </p>
+          </div>
+
+          <div className="bg-orange-50/50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-xl p-4">
+            <p className="text-[15px] leading-[1.7] text-gray-800 dark:text-gray-200">
+              Removing navigation vs. discoverability — Stripping non-booking links reduces drop-off but limits browsing freedom. Accepted based on session data showing navigation exits rarely returned to booking.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8 - OUTCOME */}
+      <section>
+        <h2 className="text-[18px] font-semibold mb-4">Outcome</h2>
+
+        <div className="flex gap-4 items-start">
+          <div className="flex-1 space-y-4">
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mt-0.5">
+                <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400" strokeWidth={3} />
+              </div>
+              <p className="text-[15px] leading-[1.7] text-gray-700 dark:text-gray-300">
+                In moderated usability testing with 5 users, task completion time for comparing 3 hotels dropped from ~4 minutes to ~90 seconds
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mt-0.5">
+                <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400" strokeWidth={3} />
+              </div>
+              <p className="text-[15px] leading-[1.7] text-gray-700 dark:text-gray-300">
+                All 5 participants used the filter system without guidance — vs. 2 out of 5 on the original design
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mt-0.5">
+                <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400" strokeWidth={3} />
+              </div>
+              <p className="text-[15px] leading-[1.7] text-gray-700 dark:text-gray-300">
+                Smarter filter placement reduced taps required to refine results from 5 to 2
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mt-0.5">
+                <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400" strokeWidth={3} />
+              </div>
+              <p className="text-[15px] leading-[1.7] text-gray-700 dark:text-gray-300">
+                This redesign is currently in development. Metrics being tracked post-launch: filter usage rate, hotel card CTR, and booking funnel drop-off at PLP stage
+              </p>
+            </div>
+          </div>
+
+          <div className="flex-shrink-0">
+            <PhoneMockup src={imgOutcome} alt="Final outcome" width="140px" />
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

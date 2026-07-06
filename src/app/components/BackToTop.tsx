@@ -64,7 +64,7 @@ export function BackToTop({
             damping: 20,
           }}
           onClick={scrollToTop}
-          className={`fixed bottom-6 right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/40 hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500/50 ${className}`}
+          className={`fixed bottom-6 right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-700 text-white shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/45 hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-500/50 border border-white/20 ${className}`}
           aria-label={t('backToTop.label')}
           title={t('backToTop.label')}
         >

@@ -29,7 +29,7 @@ interface ResumeData {
 // Resume data in English
 const defaultResumeDataEN: ResumeData = {
   name: 'Arsham Khayatzadeh',
-  title: 'Product/UI-UX Designer',
+  title: 'Product Designer',
   location: 'Mashhad, Iran',
   timezone: 'GMT +3:30',
   phone: '+98 936 936 9768',
@@ -37,42 +37,47 @@ const defaultResumeDataEN: ResumeData = {
   linkedin: 'linkedin.com/in/arsham-khayatzadeh',
   portfolio: 'arsham-portfolio.com',
   summary:
-    'Product Designer specializing in user-centered design, research-driven solutions, and scalable design systems. 3+ years of experience designing end-to-end user journeys for a 500K+ MAU booking platform. Focused on improving user experience through usability testing, analytics, and cross-functional collaboration with PM, Engineering, and Data teams. Experienced in building design systems and iterative optimization.',
+    'Data-driven Product Designer with 3+ years of experience optimizing user experiences for a high-traffic booking platform (500K+ MAU). Specialized in conversion rate optimization, design systems, and evidence-based UX decisions. Proven track record of reducing booking completion time by 45%, improving conversion rates by 20%, and building scalable design systems that reduce design iteration time by 40%. Passionate about creating experiences that drive measurable business growth through thoughtful design, rigorous testing, and cross-functional collaboration with Product, Engineering, and QA teams.',
   experience: [
     {
       title: 'Product Designer',
       company: 'IranHotelOnline',
       period: 'October 2025 – Present',
       responsibilities: [
-        'Built and maintained an Atomic Design System in Figma for consistent user experiences.',
-        'Led redesign projects using analytics (GA, Microsoft Clarity) and user research to improve conversion.',
-        'Optimized reservation flows through iterative testing and user feedback.',
-        'Collaborated cross-functionally with Product, Data, and Engineering teams.',
+        'Led complete end-to-end redesign of reservation flow, reducing booking completion time from 8 minutes to 4 minutes and improving conversion rate by 20% through data-driven iterations based on Google Analytics and Microsoft Clarity insights.',
+        'Designed and launched a comprehensive Atomic Design System in Figma, reducing design iteration time by 40% and ensuring UI consistency across 50+ screens and components.',
+        'Established a rigorous 7-step design process framework (guerrilla testing, analytics review, stakeholder alignment, technical validation, high-fidelity design, staging tests, and QA) now adopted across the design team for high-impact projects.',
+        'Conducted bi-weekly usability testing sessions with real users, translating behavioral insights into actionable design improvements that directly impacted key business metrics.',
+        'Collaborated daily with PM, PO, developers, and QA to align design decisions with product OKRs, technical constraints, and business goals.',
+        'Redesigned B2B dashboard for hotel managers, cutting task completion time by 45% through improved information architecture and mobile-responsive design.',
       ],
     },
     {
       title: 'UI/UX Designer',
-      company: 'Iran Hotel Online',
+      company: 'IranHotelOnline',
       period: 'December 2024 – September 2025',
       responsibilities: [
-        'Contributed to UI design, wireframing, and prototyping for key features in a high-traffic B2C platform, supporting redesign initiatives that improved user flows and reservation processes.',
-        'Conducted user research and usability testing to inform data-driven iterations, building foundational experience in conversion optimization and analytics tools.',
+        'Designed UI, wireframes, and prototypes for key features across a high-traffic B2C booking platform, supporting redesign initiatives that improved conversion and user satisfaction.',
+        'Conducted user research, session recording analysis, and usability testing to identify pain points and inform iterative design improvements.',
+        'Created foundational components for the design system, establishing reusable patterns for buttons, forms, cards, and navigation elements.',
+        'Collaborated with developers to ensure pixel-perfect implementation and maintain design quality standards.',
       ],
     },
     {
       title: 'Junior UI Designer',
       company: 'CtrlA Co.',
-      period: 'Aug 2023 – Oct 2024',
+      period: 'August 2023 – October 2024',
       responsibilities: [
-        'Created UI designs, wireframes, prototypes, and visual assets for web and mobile interfaces, focusing on user-friendly layouts and consistent branding.',
+        'Designed UI layouts, wireframes, and prototypes for web and mobile applications, focusing on clean, user-friendly interfaces and consistent visual language.',
+        'Created visual assets including icons, illustrations, and branded graphics to support product development and marketing efforts.',
       ],
     },
   ],
   skills:
-    'Product Design, UX/UI Design, Design Systems, Atomic Design, Figma, Prototyping, UX Research, Usability Testing, A/B Testing, Conversion Rate Optimization, Google Analytics, Microsoft Clarity, Agile, Cross-functional Collaboration',
+    'Product Design | UX/UI Design | Design Systems (Atomic Design) | Figma (Advanced) | Prototyping | User Research | Usability Testing | A/B Testing | Conversion Rate Optimization (CRO) | Google Analytics | Microsoft Clarity | Heatmap Analysis | User Journey Mapping | Information Architecture | Responsive & Mobile Design | Cross-functional Collaboration (Product, Engineering, QA) | Agile/Scrum | Stakeholder Management | Design QA | HTML/CSS (Basic Understanding)',
   education: [
     {
-      title: 'UI/UX Design Certification',
+      title: 'UI/UX Design Certification (Advanced)',
       institution: 'Tehran Technical Complex',
       period: '2022 – 2023',
     },
@@ -81,27 +86,28 @@ const defaultResumeDataEN: ResumeData = {
 
 // Resume data in Farsi
 const resumeDataFA: ResumeData = {
-  name: 'Arsham Khayatzadeh',
+  name: 'آرشام خیاط‌زاده',
   title: 'طراح محصول (Product Designer)',
   location: 'مشهد، ایران',
   timezone: '',
   phone: 'IR(+98) 936 936 9768',
   email: 'arsham.kz770@gmail.com',
-  linkedin: 'لینکدین',
-  portfolio: 'ایمیل',
+  linkedin: 'linkedin.com/in/arsham-khayatzadeh',
+  portfolio: 'arsham-portfolio.com',
   summary:
-    'طراح محصول دادهمحور با تمرکز بر بهینهسازی نرخ تبدیل، طراحی سیستمهای مقیاسپذیر و تصمیمگیریهای UX مبتنی بر شواهد و داده. علاقمند به خلق تجربههایی که علاوه بر جذابیت بصری و کاربرپسندی، بهصورت مستقیم موجب رشد بیزنس میشوند. دارای تجربه طراحی محصول برای پلتفرمهایی با بیش از ۵۰۰,۰۰۰ کاربر فعال ماهانه و همکاری نزدیک با تیمهای محصول، تست و توسعه بهمنظور بهبود شاخصهای کلیدی کسبوکار.',
+    'طراح محصول دادهمحور با بیش از ۳ سال تجربه در بهینهسازی تجربه کاربری برای پلتفرم رزرو پرترافیک با بیش از ۵۰۰ هزار کاربر فعال ماهانه. متخصص در بهینهسازی نرخ تبدیل، طراحی سیستمهای طراحی مقیاسپذیر و تصمیمگیریهای UX مبتنی بر داده. سابقه اثباتشده در کاهش زمان تکمیل رزرو تا ۴۵٪، بهبود نرخ تبدیل تا ۲۰٪ و ساخت سیستم طراحی که زمان تکرار طراحی را ۴۰٪ کاهش داده است. علاقهمند به خلق تجربههایی که از طریق طراحی دقیق، تست جامع و همکاری بینتیمی با تیمهای Product، Engineering و QA منجر به رشد کسبوکار قابل اندازهگیری میشوند.',
   experience: [
     {
-      title: 'Product Designer (promoted) - IranHotelOnline',
+      title: 'Product Designer - IranHotelOnline',
       company: '',
       period: 'مهر ۱۴۰۴ - تاکنون',
       responsibilities: [
-        'طراحی و توسعه یک Design System مبتنی بر Atomic Design، کاهش زمان تکرار طراحی تا ۴۰٪',
-        'هدایت کامل فرایند طراحی (End-to-End) و لانچ محصولات جدید',
-        'بازطراحیهای دادهمحور با استفاده از Google Analytics و Microsoft Clarity و افزایش نرخ تبدیل تا ۲۰٪',
-        'بهینهسازی فلو رزرو و کاهش زمان تکمیل رزرو از ۸ دقیقه به ۴ دقیقه',
-        'همکاری نزدیک بینتیمی با تیمهای Product، Test و Development',
+        'هدایت کامل بازطراحی فلو رزرو (End-to-End)، کاهش زمان تکمیل رزرو از ۸ دقیقه به ۴ دقیقه و بهبود نرخ تبدیل تا ۲۰٪ از طریق تکرارهای دادهمحور مبتنی بر Google Analytics و Microsoft Clarity',
+        'طراحی و راهاندازی یک سیستم طراحی جامع Atomic Design در Figma که زمان تکرار طراحی را ۴۰٪ کاهش داده و یکپارچگی UI را در بیش از ۵۰ صفحه و کامپوننت تضمین کرده است',
+        'تعریف یک چارچوب فرایند طراحی ۷ مرحلهای جامع (تست گوریلا، بررسی آنالیتیکس، همراستاسازی ذینفعان، اعتبارسنجی فنی، طراحی با کیفیت بالا، تست استیج و QA) که اکنون در سراسر تیم طراحی برای پروژههای تاثیرگذار استفاده میشود',
+        'برگزاری جلسات تست کاربرپسندی دوهفتهای با کاربران واقعی، ترجمه بینشهای رفتاری به بهبودهای طراحی قابل اجرا که مستقیماً بر شاخصهای کلیدی کسبوکار تأثیرگذار بودهاند',
+        'همکاری روزانه با PM، PO، توسعهدهندگان و QA برای همراستا کردن تصمیمات طراحی با OKRهای محصول، محدودیتهای فنی و اهداف کسبوکار',
+        'بازطراحی داشبورد B2B برای مدیران هتل، کاهش زمان تکمیل وظایف تا ۴۵٪ از طریق بهبود معماری اطلاعات و طراحی واکنشگرای موبایل',
       ],
     },
     {
@@ -109,27 +115,28 @@ const resumeDataFA: ResumeData = {
       company: '',
       period: 'آذر ۱۴۰۳ - مهر ۱۴۰۴',
       responsibilities: [
-        'مشارکت در طراحی UI، وایرفریم و پروتوتایپ برای فیچرهای کلیدی یک پلتفرم B2C پرترافیک',
-        'بهبود جریانهای کاربری و فرایند رزرو در پروژههای بازطراحی',
-        'طراحی User Flow برای پنلهای مدیریتی و داشبورد',
-        'ایجاد کامپوننتهای پایه و تودرتویهای Design System',
+        'طراحی UI، وایرفریم و پروتوتایپ برای فیچرهای کلیدی در یک پلتفرم B2C پرترافیک، پشتیبانی از ابتکارات بازطراحی که تبدیل و رضایت کاربر را بهبود بخشیدند',
+        'انجام تحقیقات کاربری، تحلیل ضبط جلسات و تست کاربرپسندی برای شناسایی نقاط درد و اطلاعرسانی بهبودهای طراحی تکراری',
+        'ایجاد کامپوننتهای پایهای برای سیستم طراحی، ایجاد الگوهای قابل استفاده مجدد برای دکمهها، فرمها، کارتها و عناصر ناوبری',
+        'همکاری با توسعهدهندگان برای اطمینان از پیادهسازی pixel-perfect و حفظ استانداردهای کیفیت طراحی',
       ],
     },
     {
-      title: 'Junior Ui Designer - Company Ctrl A',
+      title: 'Junior UI Designer - CtrlA Co.',
       company: '',
       period: 'مرداد ۱۴۰۲ - مهر ۱۴۰۳',
       responsibilities: [
-        'طراحی رابط کاربری ساده، وایرفریم و پروتوتایپ برای اپلیکیشنهای موبایل (بدون فاز پروداکشن)',
+        'طراحی لایهبندیهای UI، وایرفریم و پروتوتایپ برای برنامههای وب و موبایل، با تمرکز بر رابطهای تمیز و کاربرپسند و زبان بصری یکپارچه',
+        'ایجاد داراییهای بصری شامل آیکونها، تصاویر و گرافیکهای برندشده برای پشتیبانی از توسعه محصول و تلاشهای بازاریابی',
       ],
     },
   ],
   skills:
-    'تحقیق و کشف: مصاحبه با کاربران، تحلیل دادههای رفتاری (GA، Clarity)، تعریف فرضیه و اهداف طراحی | ایدهپردازی و طراحی: طراحی User Flow، وایرفریم، پروتوتایپ در Figma و جلسات Co-design | تست و بهبود: A/B تست، تحلیل قیف و بهینهسازی بر اساس دادههای واقعی کاربران | همکاری بینتیمی: تعامل روزانه با تیمهای Product، Test و Development برای همراستاسازی تصمیمهای طراحی با OKRهای محصول',
+    'طراحی محصول | طراحی UX/UI | سیستمهای طراحی (Atomic Design) | Figma (پیشرفته) | پروتوتایپ‌سازی | تحقیقات کاربر | تست کاربرپسندی | تست A/B | بهینهسازی نرخ تبدیل (CRO) | Google Analytics | Microsoft Clarity | تحلیل Heatmap | نقشهبرداری سفر کاربر | معماری اطلاعات | طراحی واکنشگرا و موبایل | همکاری بین‌تیمی (محصول، مهندسی، QA) | Agile/Scrum | مدیریت ذینفعان | QA طراحی | HTML/CSS (درک پایه)',
   education: [
     {
-      title: 'شروع یادگیری این حوزه از طریق:',
-      institution: 'گذراندن دو دوره UI/UX Design مقدماتی و پیشرفته در مجتمع فنی تهران',
+      title: 'گواهینامه طراحی UI/UX (پیشرفته)',
+      institution: 'مجتمع فنی تهران',
       period: '۱۴۰۱ - ۱۴۰۳',
     },
   ],

@@ -1,9 +1,9 @@
-import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { useState } from 'react';
 import React from 'react';
-import { X } from 'lucide-react';
 import { haptic } from '../utils/haptics';
 import { useLanguage } from '../contexts/LanguageContext';
+import { ImageModal } from './ImageModal';
 
 // Placeholder images for Atomic Design stages - replace with actual assets
 const tokensImage = 'https://via.placeholder.com/600x400/a855f7/ffffff?text=Tokens';
@@ -115,28 +115,6 @@ export function AtomicDesignGallery() {
     setSelectedLevel(null);
   };
 
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedLevel) {
-        closeModal();
-      }
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [selectedLevel]);
-
-  // Hide language and theme toggles when modal is open
-  useEffect(() => {
-    if (selectedLevel) {
-      document.body.classList.add('modal-open');
-    } else {
-      document.body.classList.remove('modal-open');
-    }
-    return () => {
-      document.body.classList.remove('modal-open');
-    };
-  }, [selectedLevel]);
-
   return (
     <>
       <div className="bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-12 border border-white/40 dark:border-white/20 shadow-2xl shadow-black/5">
@@ -213,82 +191,15 @@ export function AtomicDesignGallery() {
         </div>
       </div>
 
-      {/* Fullscreen Modal */}
-      <AnimatePresence>
-        {selectedLevel && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[100]"
-              onClick={closeModal}
-            />
-
-            {/* Modal Content */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-8"
-              onClick={closeModal}
-            >
-              <div 
-                className="relative max-w-7xl w-full max-h-[95vh] flex flex-col"
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Header */}
-                <div className="bg-white/10 backdrop-blur-2xl rounded-2xl px-4 py-3 sm:px-6 sm:py-4 border border-white/20 mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div 
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0"
-                      style={{ backgroundColor: selectedLevel.color }}
-                    >
-                      <span className="text-white font-bold text-lg sm:text-xl">{selectedLevel.id}</span>
-                    </div>
-                    <div>
-                      <h3 
-                        className="text-lg sm:text-2xl font-bold"
-                        style={{ color: selectedLevel.color }}
-                      >
-                        {t(`atomicDesign.${selectedLevel.key}.title`)}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-gray-300">
-                        {t(`atomicDesign.${selectedLevel.key}.subtitle`)} {t(`atomicDesign.${selectedLevel.key}.description`)}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <button
-                    onClick={closeModal}
-                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 flex-shrink-0"
-                    aria-label={t('accessibility.close')}
-                  >
-                    <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </button>
-                </div>
-
-                {/* Image */}
-                <div className="flex-1 bg-white/10 backdrop-blur-2xl rounded-2xl overflow-auto border border-white/20 shadow-2xl">
-                  <div className="p-4 sm:p-6">
-                    <img
-                      src={selectedLevel.image}
-                      alt={`${t(`atomicDesign.${selectedLevel.key}.title`)} - ${t('caseStudy.fullView')}`}
-                      className="w-full h-auto rounded-lg sm:rounded-xl shadow-2xl"
-                    />
-                  </div>
-                </div>
-
-                {/* Hint */}
-                <div className="text-center mt-4 text-xs sm:text-sm text-gray-400">
-                  {t('atomicDesign.modalHint')}
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {/* Image Modal */}
+      {selectedLevel && (
+        <ImageModal
+          isOpen={true}
+          onClose={closeModal}
+          imageSrc={selectedLevel.image}
+          imageAlt={`${t(`atomicDesign.${selectedLevel.key}.title`)} - ${t(`atomicDesign.${selectedLevel.key}.subtitle`)} ${t(`atomicDesign.${selectedLevel.key}.description`)}`}
+        />
+      )}
     </>
   );
 }

@@ -26,7 +26,7 @@ export function LanguageToggle() {
   return (
     <motion.button
       onClick={toggleLanguage}
-      className="relative overflow-hidden p-2 rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-xl border border-white/40 dark:border-white/20 shadow-lg shadow-black/5 hover:bg-white/60 dark:hover:bg-white/15 transition-all duration-200 group min-w-[40px]"
+      className="relative overflow-hidden p-2 rounded-2xl bg-white/50 dark:bg-white/6 backdrop-blur-2xl border border-white/70 dark:border-white/12 shadow-[0_4px_16px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.30)] hover:bg-white/65 dark:hover:bg-white/10 transition-all duration-200 group min-w-[40px]"
       whileHover={{ scale: 1.05 }}
       animate={isSpinning ? { rotate: 1080 } : { rotate: 0 }}
       transition={{ 

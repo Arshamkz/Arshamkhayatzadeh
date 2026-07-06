@@ -14,11 +14,12 @@ import { AtomicDesignGallery } from '../components/AtomicDesignGallery';
 import { AtomicDesignShowcase } from '../components/AtomicDesignShowcase';
 import { ChipsShowcase } from '../components/ChipsShowcase';
 import { ChipsDocHeader } from '../components/ChipsDocHeader';
-import { IranHotelPLPShowcase } from '../components/IranHotelPLPShowcase';
 import { BackToTop } from '../components/BackToTop';
 import { LanguageToggle } from '../components/LanguageToggle';
+import { PDFDownloadSection } from '../components/PDFDownloadSection';
+import { HotelBookingCaseStudy } from '../components/HotelBookingCaseStudy';
 import DotGrid from '../components/DotGrid';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default function CaseStudy() {
   const { id: projectSlug } = useParams<{ id: string }>();
@@ -44,25 +45,12 @@ export default function CaseStudy() {
 
   if (!project || !projectTranslationData) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#0a1628] relative select-none">
-        <div className="fixed inset-0 pointer-events-auto z-0">
-          <DotGrid
-            dotSize={4}
-            gap={20}
-            baseColor={actualTheme === 'dark' ? '#1a2942' : '#f0f4f8'}
-            activeColor={actualTheme === 'dark' ? '#2d4a6e' : '#dae3ec'}
-            proximity={100}
-            shockRadius={200}
-            shockStrength={4}
-            resistance={800}
-            returnDuration={1.8}
-          />
-        </div>
-        <div className="relative z-10 text-center bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-3xl p-12 border border-white/40 dark:border-white/20 shadow-2xl">
+      <div className="min-h-screen flex items-center justify-center bg-[#E9E8E3] dark:bg-[#0F0E17] relative select-none">
+        <div className="relative z-10 text-center bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-3xl p-12 border border-white/70 dark:border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.90)]">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Case Study Not Found</h1>
           <button
             onClick={() => navigate('/')}
-            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-semibold"
+            className="text-violet-700 dark:text-violet-300 hover:text-violet-900 dark:hover:text-violet-200 font-semibold"
           >
             ← {t('caseStudy.backToProjects')}
           </button>
@@ -104,13 +92,13 @@ export default function CaseStudy() {
   };
 
   // Glass Section Component
-  const GlassSection = ({ 
-    title, 
-    children, 
-    id 
-  }: { 
-    title: string; 
-    children: React.ReactNode; 
+  const GlassSection = ({
+    title,
+    children,
+    id
+  }: {
+    title: string;
+    children: React.ReactNode;
     id?: string;
   }) => (
     <motion.section
@@ -121,7 +109,7 @@ export default function CaseStudy() {
       transition={{ duration: 0.6 }}
       className="mb-12 sm:mb-16"
     >
-      <div className="bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-12 border border-white/40 dark:border-white/20 shadow-2xl shadow-black/5">
+      <div className="bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-3xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-12 border border-white/70 dark:border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.06)]">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
           {title}
         </h2>
@@ -142,21 +130,12 @@ export default function CaseStudy() {
         <meta name="theme-color" content={actualTheme === 'dark' ? '#0a1628' : '#ffffff'} />
       </Helmet>
 
-      <div className="min-h-screen bg-white dark:bg-[#0a1628] relative overflow-x-hidden select-none">
-        
-        {/* Dot Grid Wallpaper */}
-        <div className="fixed inset-0 pointer-events-auto z-0">
-          <DotGrid
-            dotSize={4}
-            gap={20}
-            baseColor={actualTheme === 'dark' ? '#1a2942' : '#f0f4f8'}
-            activeColor={actualTheme === 'dark' ? '#2d4a6e' : '#dae3ec'}
-            proximity={100}
-            shockRadius={200}
-            shockStrength={4}
-            resistance={800}
-            returnDuration={1.8}
-          />
+      <div className="min-h-screen bg-[#E9E8E3] dark:bg-[#0F0E17] relative overflow-x-hidden select-none transition-colors duration-300">
+
+        {/* Ambient orbs */}
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          <div className="absolute top-[-15%] left-[-10%] w-[55vw] h-[55vw] rounded-full bg-violet-300/15 dark:bg-violet-900/15 blur-[120px]" />
+          <div className="absolute bottom-[-10%] right-[-5%] w-[45vw] h-[45vw] rounded-full bg-teal-300/12 dark:bg-teal-900/12 blur-[100px]" />
         </div>
 
         {/* Cursor Spotlight Effect */}
@@ -166,13 +145,13 @@ export default function CaseStudy() {
         <ScrollProgress />
 
         {/* Theme Toggle */}
-        <div className="fixed top-6 right-6 z-50">
+        <div className="fixed top-5 right-5 z-50">
           <motion.button
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-full bg-white/60 dark:bg-white/10 backdrop-blur-md border border-gray-200/50 dark:border-white/10 flex items-center justify-center hover:bg-white/80 dark:hover:bg-white/20 transition-all duration-200 shadow-lg shadow-black/5 overflow-hidden relative"
+            className="w-10 h-10 rounded-2xl bg-white/50 dark:bg-white/6 backdrop-blur-2xl border border-white/70 dark:border-white/12 shadow-[0_4px_16px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.30)] flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 overflow-hidden relative"
             aria-label="Toggle theme"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
           >
             <motion.div
               key={actualTheme}
@@ -199,7 +178,7 @@ export default function CaseStudy() {
         </div>
 
         {/* Language Toggle */}
-        <div className="fixed top-6 left-6 z-50">
+        <div className="fixed top-5 left-5 z-50">
           <LanguageToggle />
         </div>
 
@@ -212,7 +191,7 @@ export default function CaseStudy() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             onClick={handleBack}
-            className="mb-6 sm:mb-8 inline-flex items-center gap-2 sm:gap-2.5 bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-xl px-4 py-3 sm:py-2.5 border border-white/40 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/15 transition-all duration-200 group shadow-lg active:scale-95 min-h-[44px]"
+            className="mb-6 sm:mb-8 inline-flex items-center gap-2 sm:gap-2.5 bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-2xl px-4 py-3 sm:py-2.5 border border-white/70 dark:border-white/12 shadow-[0_4px_16px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:bg-white/65 dark:hover:bg-white/10 transition-all duration-200 group active:scale-95 min-h-[44px]"
           >
             <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300 sm:group-hover:-translate-x-1 transition-transform" />
             <span className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
@@ -228,7 +207,7 @@ export default function CaseStudy() {
             className="mb-8 sm:mb-12"
           >
             {/* Badges - Top Right */}
-            {(project.featured || project.id === 'design-system' || project.id === 'iranhotel-plp') && (
+            {(project.featured || project.id === 'design-system' || project.id === 'plp-redesign') && (
               <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 mb-4">
                 {/* Leadership Badge */}
                 {project.featured && (
@@ -283,28 +262,33 @@ export default function CaseStudy() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-10 sm:mb-12 md:mb-16"
           >
-            <div className="bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/40 dark:border-white/20 shadow-xl">
+            <div className="bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 border border-white/70 dark:border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.06)]">
               <div className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 uppercase tracking-wider">{t('caseStudy.role')}</div>
               <div className={`text-xs sm:text-sm md:text-base font-medium text-gray-900 dark:text-white ${textAlign} leading-tight`}>{projectTranslationData.role}</div>
             </div>
 
-            <div className="bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/40 dark:border-white/20 shadow-xl">
+            <div className="bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 border border-white/70 dark:border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.06)]">
               <div className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 uppercase tracking-wider">{t('caseStudy.timeline')}</div>
               <div className={`text-xs sm:text-sm md:text-base font-medium text-gray-900 dark:text-white ${textAlign} leading-tight`}>{projectTranslationData.timeline}</div>
             </div>
 
-            <div className="bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/40 dark:border-white/20 shadow-xl">
+            <div className="bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 border border-white/70 dark:border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.06)]">
               <div className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 uppercase tracking-wider">{t('caseStudy.company')}</div>
               <div className={`text-xs sm:text-sm md:text-base font-medium text-gray-900 dark:text-white ${textAlign} leading-tight`}>{projectTranslationData.company}</div>
             </div>
 
-            <div className="bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/40 dark:border-white/20 shadow-xl">
+            <div className="bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 border border-white/70 dark:border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.06)]">
               <div className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 uppercase tracking-wider">{t('caseStudy.collaboration')}</div>
               <div className={`text-xs sm:text-sm md:text-base font-medium text-gray-900 dark:text-white ${textAlign} leading-tight`}>{projectTranslationData.collaboration}</div>
             </div>
           </motion.div>
 
-          {/* Sections Container */}
+          {/* PLP Redesign — standalone case study, replaces default sections */}
+          {project.id === 'plp-redesign' ? (
+            <HotelBookingCaseStudy />
+          ) : (
+
+          /* Default Sections Container */
           <div className="space-y-12 sm:space-y-16">
 
             {/* Overview/Context */}
@@ -323,6 +307,13 @@ export default function CaseStudy() {
                   {t('caseStudy.visitProject')}
                 </a>
               )}
+              {project.pdfDownloadUrl && (
+                <PDFDownloadSection
+                  pdfUrl={project.pdfDownloadUrl}
+                  title="Full Case Study Available"
+                  description="Download the complete PDF case study with detailed visual examples, research insights, and in-depth analysis."
+                />
+              )}
             </GlassSection>
 
             {/* Problem */}
@@ -335,7 +326,7 @@ export default function CaseStudy() {
                 <h3 className="font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 text-base sm:text-lg">{t('caseStudy.keyIssues')}</h3>
                 <div className="space-y-2 sm:space-y-3">
                   {projectTranslationData.problem.issues.map((issue, i) => (
-                    <div key={i} className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/30 dark:border-white/10 flex items-start gap-2 sm:gap-3">
+                    <div key={i} className="bg-white/40 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-3 sm:p-4 border border-white/60 dark:border-white/10 flex items-start gap-2 sm:gap-3">
                       <div className="w-1.5 h-1.5 bg-red-500 dark:bg-red-400 rounded-full mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
                       <span className={`text-sm sm:text-base text-gray-700 dark:text-gray-300 ${textAlign}`}>{issue}</span>
                     </div>
@@ -347,7 +338,7 @@ export default function CaseStudy() {
                 <h3 className="font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 text-base sm:text-lg">{t('caseStudy.goals')}</h3>
                 <div className="space-y-2 sm:space-y-3">
                   {projectTranslationData.problem.goals.map((goal, i) => (
-                    <div key={i} className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/30 dark:border-white/10 flex items-start gap-2 sm:gap-3">
+                    <div key={i} className="bg-white/40 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-3 sm:p-4 border border-white/60 dark:border-white/10 flex items-start gap-2 sm:gap-3">
                       <Check className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
                       <span className={`text-sm sm:text-base text-gray-700 dark:text-gray-300 ${textAlign}`}>{goal}</span>
                     </div>
@@ -366,7 +357,7 @@ export default function CaseStudy() {
                 <h3 className="font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 text-base sm:text-lg">{t('caseStudy.methods')}</h3>
                 <div className="space-y-2 sm:space-y-3">
                   {projectTranslationData.research.methods.map((method, i) => (
-                    <div key={i} className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/30 dark:border-white/10 flex items-start gap-2 sm:gap-3">
+                    <div key={i} className="bg-white/40 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-3 sm:p-4 border border-white/60 dark:border-white/10 flex items-start gap-2 sm:gap-3">
                       <div className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
                       <span className={`text-sm sm:text-base text-gray-700 dark:text-gray-300 ${textAlign}`}>{method}</span>
                     </div>
@@ -566,6 +557,13 @@ export default function CaseStudy() {
                 {projectTranslationData.solution.description}
               </p>
 
+              {/* Hotel Booking Case Study - Full Figma Component */}
+              {project.id === 'plp-redesign' && (
+                <div className="mb-8 sm:mb-10">
+                  <HotelBookingCaseStudy />
+                </div>
+              )}
+
               {/* Atomic Design 5-stage grid — TOP of design-system */}
               {project.id === 'design-system' && (
                 <div className="mb-8 sm:mb-10">
@@ -603,16 +601,9 @@ export default function CaseStudy() {
                 </div>
               )}
 
-              {/* IranHotel PLP Interactive Showcase */}
-              {project.id === 'iranhotel-plp' && (
-                <div className="mb-8 sm:mb-10">
-                  <IranHotelPLPShowcase />
-                </div>
-              )}
-              
               <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                 {projectTranslationData.solution.features.map((feature, i) => (
-                  <div key={i} className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/30 dark:border-white/10 flex items-start gap-2 sm:gap-3">
+                  <div key={i} className="bg-white/40 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-3 sm:p-4 border border-white/60 dark:border-white/10 flex items-start gap-2 sm:gap-3">
                     <Check className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
                     <span className={`text-sm sm:text-base text-gray-700 dark:text-gray-300 ${textAlign}`}>{feature}</span>
                   </div>
@@ -639,7 +630,11 @@ export default function CaseStudy() {
               </div>
             </GlassSection>
 
-            {/* Other Projects */}
+          </div>
+          )}
+
+          {/* Other Projects */}
+          <div className="mt-12 sm:mt-16">
             {otherProjects.length > 0 && (
               <motion.section
                 initial={{ opacity: 0, y: 40 }}
@@ -648,7 +643,7 @@ export default function CaseStudy() {
                 transition={{ duration: 0.6 }}
                 className="mb-12 sm:mb-16"
               >
-                <div className="bg-white/40 dark:bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-12 border border-white/40 dark:border-white/20 shadow-2xl shadow-black/5">
+                <div className="bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-3xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-12 border border-white/70 dark:border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.06)]">
                   <div className="mb-6 sm:mb-8">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">
                       {t('caseStudy.otherProjects')}
@@ -684,7 +679,7 @@ export default function CaseStudy() {
                           gradient: 'from-blue-400 to-cyan-500',
                           bgGradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
                         },
-                        'iranhotel-plp': {
+                        'plp-redesign': {
                           Icon: Hotel,
                           gradient: 'from-indigo-500 to-purple-600',
                           bgGradient: 'from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20'
@@ -708,7 +703,7 @@ export default function CaseStudy() {
                           }}
                           className="group cursor-pointer"
                         >
-                          <div className="bg-white/50 dark:bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl overflow-hidden border border-white/40 dark:border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300">
+                          <div className="bg-white/50 dark:bg-white/6 backdrop-blur-2xl rounded-3xl overflow-hidden border border-white/70 dark:border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)] hover:shadow-[0_20px_60px_rgba(109,40,217,0.10)] transition-all duration-300">
                             
                             {/* Icon Header */}
                             <div className={`relative h-32 sm:h-36 overflow-hidden bg-gradient-to-br ${meta.bgGradient} flex items-center justify-center`}>

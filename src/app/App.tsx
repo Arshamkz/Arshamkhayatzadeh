@@ -16,7 +16,7 @@ export default function App() {
         <ThemeProvider>
           <LanguageProvider>
             <BrowserRouter>
-              <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+              <div className="min-h-screen bg-[#E9E8E3] dark:bg-[#0F0E17] transition-colors duration-300">
                 <SkipToContent />
                 <Routes>
                   <Route path="/" element={<Home />} />
